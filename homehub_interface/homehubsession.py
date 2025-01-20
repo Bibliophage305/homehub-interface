@@ -1,6 +1,7 @@
 import os
 import json
 from urllib.parse import urljoin
+from typing import List, Dict, Union
 
 from homehubauth import HomeHubGuestAuth, HomeHubAdminAuth
 from homehubrequest import HomeHubRequest
@@ -16,27 +17,27 @@ class ResponseException(Exception):
 
 class HomeHubSession:
 
-    def __init__(self, timeout=10):
+    def __init__(self, timeout: int = 10):
         self.timeout = timeout
-        self.session_id = 0
-        self._guest_authentication = None
-        self._admin_authentication = None
-        self.requests = []
+        self.session_id: int = 0
+        self._guest_authentication: Union[HomeHubGuestAuth, None] = None
+        self._admin_authentication: Union[HomeHubAdminAuth, None] = None
+        self.requests: List[HomeHubRequest] = []
 
     @property
-    def host(self):
+    def host(self) -> str:
         return os.getenv("HOMEHUB_HOST", "192.168.1.254")
 
     @property
-    def base_url(self):
+    def base_url(self) -> str:
         return f"http://{self.host}"
 
     @property
-    def api_url(self):
+    def api_url(self) -> str:
         return urljoin(self.base_url, "/cgi/json-req")
 
     @property
-    def authentication(self):
+    def authentication(self) -> Union[HomeHubGuestAuth, HomeHubAdminAuth, None]:
         if self._admin_authentication is not None:
             return self._admin_authentication
         if self._guest_authentication is not None:
@@ -44,17 +45,17 @@ class HomeHubSession:
         return None
 
     @property
-    def next_request_id(self):
+    def next_request_id(self) -> int:
         return len(self.requests)
 
-    def uri_to_url(self, uri):
+    def uri_to_url(self, uri: str) -> str:
         return urljoin(self.base_url.rstrip("/"), uri)
 
-    def authenticate_guest(self):
+    def authenticate_guest(self) -> None:
         self._guest_authentication = HomeHubGuestAuth(self)
         self._guest_authentication.authenticate()
 
-    def authenticate_admin(self):
+    def authenticate_admin(self) -> None:
         reset_request = HomeHubRequest(self)
 
         reset_request.add_action({"method": "resetEvents"})
@@ -68,7 +69,9 @@ class HomeHubSession:
         self._admin_authentication = HomeHubAdminAuth(self)
         self._admin_authentication.authenticate()
 
-    def make_request(self, actions):
+    def make_request(
+        self, actions: List[Dict[str, Union[str, Dict[str, Union[str, bool]]]]]
+    ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
         if self.authentication is None:
             self.authenticate_guest()
 
@@ -83,7 +86,9 @@ class HomeHubSession:
 
         return json.loads(request.response.text)
 
-    def get_hub_light_control(self):
+    def get_hub_light_control(
+        self,
+    ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
         actions = [
             {
                 "method": "getValue",
@@ -116,7 +121,7 @@ class HomeHubSession:
 
         return data
 
-    def get_devices(self) -> list:
+    def get_devices(self) -> List[Dict[str, Union[str, Dict[str, Union[str, bool]]]]]:
         """
         Returns the list of connected devices
 
@@ -137,7 +142,9 @@ class HomeHubSession:
 
         return data
 
-    def get_vendor_log_download_uri(self):
+    def get_vendor_log_download_uri(
+        self,
+    ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
         actions = [
             {
                 "method": "getVendorLogDownloadURI",
@@ -151,19 +158,25 @@ class HomeHubSession:
         return data
 
     @staticmethod
-    def _is_successful(data):
+    def _is_successful(
+        data: Dict[str, Union[str, Dict[str, Union[str, bool]]]]
+    ) -> bool:
         return (
             data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777216
         )
 
     @staticmethod
-    def _is_invalid_user_session(data):
+    def _is_invalid_user_session(
+        data: Dict[str, Union[str, Dict[str, Union[str, bool]]]]
+    ) -> bool:
         return (
             data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777219
         )
 
     @staticmethod
-    def _parse_homehub_response(data):
+    def _parse_homehub_response(
+        data: Dict[str, Union[str, Dict[str, Union[str, bool]]]]
+    ) -> List[Dict[str, Union[str, bool]]]:
         """Parse the BT Home Hub data format."""
         known_devices = data["reply"]["actions"][0]["callbacks"][0]["parameters"][
             "value"

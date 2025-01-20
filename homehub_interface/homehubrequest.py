@@ -1,16 +1,17 @@
 import json
 import requests
 from urllib.parse import quote
+from typing import Dict, Any, List, Union
 
 
 class HomeHubRequest:
-    def __init__(self, session):
-        self.session = session
-        self.actions = []
-        self.response = None
+    def __init__(self, session: Any) -> None:
+        self.session: Any = session
+        self.actions: List[Dict[str, Union[str, int]]] = []
+        self.response: Any = None
 
     @property
-    def cookies(self):
+    def cookies(self) -> Dict[str, str]:
         return (
             {
                 "lang": "en",
@@ -23,11 +24,11 @@ class HomeHubRequest:
         )
 
     @property
-    def is_priority(self):
+    def is_priority(self) -> bool:
         return any(action["method"] == "logIn" for action in self.actions)
 
     @property
-    def request_data(self):
+    def request_data(self) -> Dict[str, Any]:
         return {
             "request": {
                 "id": self.session.next_request_id,
@@ -40,10 +41,10 @@ class HomeHubRequest:
             }
         }
 
-    def add_action(self, action):
+    def add_action(self, action: Dict[str, Union[str, int]]) -> None:
         self.actions.append(action | {"id": len(self.actions)})
 
-    def send(self):
+    def send(self) -> None:
         self.session.authentication.refresh_client_nonce()
 
         data = {"req": json.dumps(self.request_data, sort_keys=True).encode("utf-8")}

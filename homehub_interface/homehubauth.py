@@ -1,6 +1,7 @@
 import hashlib
 import os
 import random
+from typing import Dict, Any, List, Union
 
 
 class AuthenticationException(Exception):
@@ -8,23 +9,22 @@ class AuthenticationException(Exception):
 
 
 class HomeHubAuth:
-
-    def __init__(self, session):
-        self.session = session
-        self.server_nonce = ""
+    def __init__(self, session: Any) -> None:
+        self.session: Any = session
+        self.server_nonce: str = ""
         self.refresh_client_nonce()
 
-    def refresh_client_nonce(self):
-        self.client_nonce = random.randint(0, 1 << 31 - 1)
+    def refresh_client_nonce(self) -> None:
+        self.client_nonce: int = random.randint(0, 1 << 31 - 1)
 
     @property
-    def auth_hash(self):
+    def auth_hash(self) -> str:
         return self._md5_hex(f"{self.user}:{self.server_nonce}:{self.password}")
 
-    def authenticate(self):
+    def authenticate(self) -> None:
         print("authenticating with", self.user)
 
-        data = self.session.make_request(
+        data: Dict[str, Any] = self.session.make_request(
             [
                 {
                     "method": "logIn",
@@ -62,33 +62,37 @@ class HomeHubAuth:
                 f"Failed to authenticate. Error: {data['reply']['error']['description']}"
             )
 
-        params = data["reply"]["actions"][0]["callbacks"][0]["parameters"]
+        params: Dict[str, Any] = data["reply"]["actions"][0]["callbacks"][0][
+            "parameters"
+        ]
 
         self.server_nonce = params["nonce"]
         self.session.session_id = params["id"]
 
     @property
-    def auth_key(self):
+    def auth_key(self) -> str:
         return self._md5_hex(
             f"{self.auth_hash}:{self.session.next_request_id}:{self.client_nonce}:JSON:/cgi/json-req"
         )
 
     @staticmethod
-    def _is_successful(data):
+    def _is_successful(data: Dict[str, Any]) -> bool:
         return (
             data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777216
         )
 
     @staticmethod
-    def _md5_hex(s):
+    def _md5_hex(s: str) -> str:
         return hashlib.md5(s.encode("utf-8")).hexdigest()
 
     @property
-    def ha1(self):
+    def ha1(self) -> str:
         return self.auth_hash[:10] + self.password + self.auth_hash[10:]
 
     @property
-    def auth_cookie(self):
+    def auth_cookie(
+        self,
+    ) -> Dict[str, Union[int, str, bool, Dict[str, Union[str, List[Dict[str, str]]]]]]:
         return {
             "req_id": self.session.next_request_id + 1,
             "sess_id": self.session.session_id,
@@ -104,17 +108,17 @@ class HomeHubAuth:
 
 
 class HomeHubAdminAuth(HomeHubAuth):
-    def __init__(self, *args, **kwargs):
-        self.user = "admin"
-        raw_password = os.getenv("HOMEHUB_ADMIN_PASSWORD")
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        self.user: str = "admin"
+        raw_password: str = os.getenv("HOMEHUB_ADMIN_PASSWORD")
         if raw_password is None:
             raise ValueError("HOMEHUB_ADMIN_PASSWORD not set")
-        self.password = self._md5_hex(raw_password)
+        self.password: str = self._md5_hex(raw_password)
         super().__init__(*args, **kwargs)
 
 
 class HomeHubGuestAuth(HomeHubAuth):
-    def __init__(self, *args, **kwargs):
-        self.user = "guest"
-        self.password = self._md5_hex("")
+    def __init__(self, *args: Any, **kwargs: Any) -> None:
+        self.user: str = "guest"
+        self.password: str = self._md5_hex("")
         super().__init__(*args, **kwargs)
