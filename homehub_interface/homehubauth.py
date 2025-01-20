@@ -14,6 +14,7 @@ class HomeHubAuth:
     def __init__(self, session: Any) -> None:
         self.session: Any = session
         self.server_nonce: str = ""
+        self.session_id: int = 0
         self.refresh_client_nonce()
 
     def refresh_client_nonce(self) -> None:
@@ -69,7 +70,7 @@ class HomeHubAuth:
         ][0]["parameters"]
 
         self.server_nonce = params["nonce"]
-        self.session.session_id = params["id"]
+        self.session_id = params["id"]
 
     @property
     def auth_key(self) -> str:
@@ -90,7 +91,7 @@ class HomeHubAuth:
     ) -> Dict[str, Union[int, str, bool, Dict[str, Union[str, List[Dict[str, str]]]]]]:
         return {
             "req_id": self.session.next_request_id + 1,
-            "sess_id": self.session.session_id,
+            "sess_id": self.session_id,
             "basic": False,
             "user": self.user,
             "dataModel": {

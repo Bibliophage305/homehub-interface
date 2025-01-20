@@ -19,7 +19,6 @@ class HomeHubSession:
 
     def __init__(self, timeout: int = 10):
         self.timeout = timeout
-        self.session_id: int = 0
         self.requests: List[HomeHubRequest] = []
         self.next_request_id: int = 0
         self.auth = None
@@ -47,8 +46,6 @@ class HomeHubSession:
         self.make_request([{"method": "resetEvents"}])
 
         self.next_request_id = 0
-
-        self.session_id = 0
 
         self.auth = HomeHubAdminAuth(self)
         self.auth.authenticate()

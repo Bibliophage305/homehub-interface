@@ -32,7 +32,7 @@ class HomeHubRequest:
         return {
             "request": {
                 "id": self.session.next_request_id,
-                "session-id": self.session.session_id,
+                "session-id": self.session.auth.session_id,
                 "priority": self.is_priority,
                 "actions": [],
                 "cnonce": self.session.auth.client_nonce,
