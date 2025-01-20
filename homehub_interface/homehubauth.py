@@ -3,6 +3,8 @@ import os
 import random
 from typing import Dict, Any, List, Union
 
+from homehubrequest import HomeHubRequest
+
 
 class AuthenticationException(Exception):
     pass
@@ -24,7 +26,7 @@ class HomeHubAuth:
     def authenticate(self) -> None:
         print("authenticating with", self.user)
 
-        data: Dict[str, Any] = self.session.make_request(
+        request: HomeHubRequest = self.session.make_request(
             [
                 {
                     "method": "logIn",
@@ -57,14 +59,14 @@ class HomeHubAuth:
             ]
         )
 
-        if not self._is_successful(data):
+        if not request.is_successful:
             raise AuthenticationException(
-                f"Failed to authenticate. Error: {data['reply']['error']['description']}"
+                f"Failed to authenticate. Error: {request.response_json['reply']['error']['description']}"
             )
 
-        params: Dict[str, Any] = data["reply"]["actions"][0]["callbacks"][0][
-            "parameters"
-        ]
+        params: Dict[str, Any] = request.response_json["reply"]["actions"][0][
+            "callbacks"
+        ][0]["parameters"]
 
         self.server_nonce = params["nonce"]
         self.session.session_id = params["id"]
@@ -75,14 +77,7 @@ class HomeHubAuth:
             f"{self.auth_hash}:{self.session.next_request_id}:{self.client_nonce}:JSON:/cgi/json-req"
         )
 
-    @staticmethod
-    def _is_successful(data: Dict[str, Any]) -> bool:
-        return (
-            data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777216
-        )
-
-    @staticmethod
-    def _md5_hex(s: str) -> str:
+    def _md5_hex(self, s: str) -> str:
         return hashlib.md5(s.encode("utf-8")).hexdigest()
 
     @property

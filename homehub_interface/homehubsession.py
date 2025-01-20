@@ -70,7 +70,7 @@ class HomeHubSession:
 
         self.next_request_id += 1
 
-        return json.loads(request.response.text)
+        return request
 
     def get_hub_light_control(
         self,
@@ -103,9 +103,9 @@ class HomeHubSession:
             },
         ]
 
-        data = self.make_request(actions)
+        request = self.make_request(actions)
 
-        return data
+        return request.response_json
 
     def get_devices(self) -> List[Dict[str, Union[str, Dict[str, Union[str, bool]]]]]:
         """
@@ -124,9 +124,9 @@ class HomeHubSession:
             }
         ]
 
-        data = self.make_request(actions)
+        request = self.make_request(actions)
 
-        return data
+        return request.response_json
 
     def get_vendor_log_download_uri(
         self,
@@ -139,17 +139,9 @@ class HomeHubSession:
             }
         ]
 
-        data = self.make_request(actions)
+        request = self.make_request(actions)
 
-        return data
-
-    @staticmethod
-    def _is_successful(
-        data: Dict[str, Union[str, Dict[str, Union[str, bool]]]]
-    ) -> bool:
-        return (
-            data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777216
-        )
+        return request.response_json
 
     @staticmethod
     def _is_invalid_user_session(

@@ -55,3 +55,15 @@ class HomeHubRequest:
             cookies=self.cookies,
             timeout=self.session.timeout,
         )
+
+    @property
+    def response_json(self) -> str:
+        return json.loads(self.response.text) if self.response is not None else None
+
+    @property
+    def is_successful(self) -> bool:
+        return (
+            self.response_json
+            and self.response_json.get("reply", {}).get("error", {}).get("code", {})
+            == 16777216
+        )
