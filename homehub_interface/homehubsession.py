@@ -20,9 +20,9 @@ class HomeHubSession:
     def __init__(self, timeout: int = 10):
         self.timeout = timeout
         self.session_id: int = 0
-        self._guest_authentication: Union[HomeHubGuestAuth, None] = None
-        self._admin_authentication: Union[HomeHubAdminAuth, None] = None
         self.requests: List[HomeHubRequest] = []
+        self.next_request_id: int = 0
+        self.auth = None
 
     @property
     def host(self) -> str:
@@ -36,43 +36,27 @@ class HomeHubSession:
     def api_url(self) -> str:
         return urljoin(self.base_url, "/cgi/json-req")
 
-    @property
-    def authentication(self) -> Union[HomeHubGuestAuth, HomeHubAdminAuth, None]:
-        if self._admin_authentication is not None:
-            return self._admin_authentication
-        if self._guest_authentication is not None:
-            return self._guest_authentication
-        return None
-
-    @property
-    def next_request_id(self) -> int:
-        return len(self.requests)
-
     def uri_to_url(self, uri: str) -> str:
         return urljoin(self.base_url.rstrip("/"), uri)
 
     def authenticate_guest(self) -> None:
-        self._guest_authentication = HomeHubGuestAuth(self)
-        self._guest_authentication.authenticate()
+        self.auth = HomeHubGuestAuth(self)
+        self.auth.authenticate()
 
     def authenticate_admin(self) -> None:
-        reset_request = HomeHubRequest(self)
+        self.make_request([{"method": "resetEvents"}])
 
-        reset_request.add_action({"method": "resetEvents"})
+        self.next_request_id = 0
 
-        reset_request.send()
-
-        self.requests = []
         self.session_id = 0
-        self._guest_authentication = None
 
-        self._admin_authentication = HomeHubAdminAuth(self)
-        self._admin_authentication.authenticate()
+        self.auth = HomeHubAdminAuth(self)
+        self.auth.authenticate()
 
     def make_request(
         self, actions: List[Dict[str, Union[str, Dict[str, Union[str, bool]]]]]
     ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
-        if self.authentication is None:
+        if self.auth is None:
             self.authenticate_guest()
 
         request = HomeHubRequest(self)
@@ -83,6 +67,8 @@ class HomeHubSession:
         request.send()
 
         self.requests.append(request)
+
+        self.next_request_id += 1
 
         return json.loads(request.response.text)
 
@@ -172,31 +158,3 @@ class HomeHubSession:
         return (
             data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777219
         )
-
-    @staticmethod
-    def _parse_homehub_response(
-        data: Dict[str, Union[str, Dict[str, Union[str, bool]]]]
-    ) -> List[Dict[str, Union[str, bool]]]:
-        """Parse the BT Home Hub data format."""
-        known_devices = data["reply"]["actions"][0]["callbacks"][0]["parameters"][
-            "value"
-        ]
-
-        devices = []
-
-        for device in known_devices:
-            # device = Device(
-            #     mac_address=device["PhysAddress"].upper(),
-            #     ip_address=device["IPAddress"],
-            #     address_source=device["AddressSource"],
-            #     name=device["UserHostName"] or device["HostName"],
-            #     interface=device["InterfaceType"],
-            #     active=device["Active"],
-            #     user_friendly_name=device["UserFriendlyName"],
-            #     detected_device_type=device["DetectedDeviceType"],
-            #     user_device_type=device["UserDeviceType"],
-            # )
-
-            devices.append(device)
-
-        return devices

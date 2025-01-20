@@ -16,10 +16,10 @@ class HomeHubRequest:
             {
                 "lang": "en",
                 "session": quote(
-                    json.dumps(self.session.authentication.auth_cookie).encode("utf-8")
+                    json.dumps(self.session.auth.auth_cookie).encode("utf-8")
                 ),
             }
-            if self.session.authentication is not None
+            if self.session.auth is not None
             else {}
         )
 
@@ -35,8 +35,8 @@ class HomeHubRequest:
                 "session-id": self.session.session_id,
                 "priority": self.is_priority,
                 "actions": [],
-                "cnonce": self.session.authentication.client_nonce,
-                "auth-key": self.session.authentication.auth_key,
+                "cnonce": self.session.auth.client_nonce,
+                "auth-key": self.session.auth.auth_key,
                 "actions": self.actions,
             }
         }
@@ -45,7 +45,7 @@ class HomeHubRequest:
         self.actions.append(action | {"id": len(self.actions)})
 
     def send(self) -> None:
-        self.session.authentication.refresh_client_nonce()
+        self.session.auth.refresh_client_nonce()
 
         data = {"req": json.dumps(self.request_data, sort_keys=True).encode("utf-8")}
 
