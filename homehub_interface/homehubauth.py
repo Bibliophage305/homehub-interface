@@ -1,8 +1,6 @@
 import hashlib
 import os
 import random
-import json
-from homehubrequest import HomeHubRequest
 
 
 class AuthenticationException(Exception):
@@ -13,7 +11,7 @@ class HomeHubAuth:
 
     def __init__(self, session):
         self.session = session
-        self.server_nonce = None
+        self.server_nonce = ""
         self.refresh_client_nonce()
 
     def refresh_client_nonce(self):
@@ -21,9 +19,7 @@ class HomeHubAuth:
 
     @property
     def auth_hash(self):
-        return self._md5_hex(
-            f"{self.user}:{self.server_nonce if self.server_nonce is not None else ''}:{self.password}"
-        )
+        return self._md5_hex(f"{self.user}:{self.server_nonce}:{self.password}")
 
     def authenticate(self):
         print("authenticating with", self.user)
@@ -66,12 +62,10 @@ class HomeHubAuth:
                 f"Failed to authenticate. Error: {data['reply']['error']['description']}"
             )
 
-        self.server_nonce = data["reply"]["actions"][0]["callbacks"][0]["parameters"][
-            "nonce"
-        ]
-        self.session.session_id = data["reply"]["actions"][0]["callbacks"][0][
-            "parameters"
-        ]["id"]
+        params = data["reply"]["actions"][0]["callbacks"][0]["parameters"]
+
+        self.server_nonce = params["nonce"]
+        self.session.session_id = params["id"]
 
     @property
     def auth_key(self):

@@ -1,5 +1,6 @@
 import os
 import json
+from urllib.parse import urljoin
 
 from homehubauth import HomeHubGuestAuth, HomeHubAdminAuth
 from homehubrequest import HomeHubRequest
@@ -27,8 +28,12 @@ class HomeHubSession:
         return os.getenv("HOMEHUB_HOST", "192.168.1.254")
 
     @property
-    def url(self):
-        return f"http://{self.host}/cgi/json-req"
+    def base_url(self):
+        return f"http://{self.host}"
+
+    @property
+    def api_url(self):
+        return urljoin(self.base_url, "/cgi/json-req")
 
     @property
     def authentication(self):
@@ -41,6 +46,9 @@ class HomeHubSession:
     @property
     def next_request_id(self):
         return len(self.requests)
+
+    def uri_to_url(self, uri):
+        return urljoin(self.base_url.rstrip("/"), uri)
 
     def authenticate_guest(self):
         self._guest_authentication = HomeHubGuestAuth(self)
@@ -122,6 +130,19 @@ class HomeHubSession:
                 "method": "getValue",
                 "xpath": "Device/Hosts/Hosts",
                 "options": {"capability-flags": {"interface": True}},
+            }
+        ]
+
+        data = self.make_request(actions)
+
+        return data
+
+    def get_vendor_log_download_uri(self):
+        actions = [
+            {
+                "method": "getVendorLogDownloadURI",
+                "xpath": "Device/DeviceInfo/VendorLogFiles/VendorLogFile[@uid='1']",
+                "parameters": {"FileName": "eventLog"},
             }
         ]
 

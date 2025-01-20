@@ -49,7 +49,7 @@ class HomeHubRequest:
         data = {"req": json.dumps(self.request_data, sort_keys=True).encode("utf-8")}
 
         self.response = requests.post(
-            url=self.session.url,
+            url=self.session.api_url,
             data=data,
             cookies=self.cookies,
             timeout=self.session.timeout,
