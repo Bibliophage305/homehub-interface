@@ -1,13 +1,15 @@
 import json
 import requests
 from urllib.parse import quote
-from typing import Dict, Any, List, Union
+from typing import Dict, Any, List
+
+from homehubaction import HomeHubAction
 
 
 class HomeHubRequest:
     def __init__(self, session: Any) -> None:
         self.session: Any = session
-        self.actions: List[Dict[str, Union[str, int]]] = []
+        self.actions: List[HomeHubAction] = []
         self.response: Any = None
 
     @property
@@ -25,36 +27,39 @@ class HomeHubRequest:
 
     @property
     def is_priority(self) -> bool:
-        return any(action["method"] == "logIn" for action in self.actions)
+        return any(action.method == "logIn" for action in self.actions)
 
     @property
     def request_data(self) -> Dict[str, Any]:
         return {
             "request": {
-                "id": self.session.next_request_id,
-                "session-id": self.session.auth.session_id,
-                "priority": self.is_priority,
-                "actions": [],
-                "cnonce": self.session.auth.client_nonce,
+                "actions": [action.as_dict() for action in self.actions],
                 "auth-key": self.session.auth.auth_key,
-                "actions": self.actions,
+                "cnonce": self.session.auth.client_nonce,
+                "id": self.session.next_request_id,
+                "priority": self.is_priority,
+                "session-id": self.session.auth.session_id,
             }
         }
 
-    def add_action(self, action: Dict[str, Union[str, int]]) -> None:
-        self.actions.append(action | {"id": len(self.actions)})
+    def add_action(self, action: HomeHubAction) -> None:
+        action.set_id(len(self.actions))
+        self.actions.append(action)
 
     def send(self) -> None:
         self.session.auth.refresh_client_nonce()
 
         data = {"req": json.dumps(self.request_data, sort_keys=True).encode("utf-8")}
 
-        self.response = requests.post(
-            url=self.session.api_url,
-            data=data,
-            cookies=self.cookies,
-            timeout=self.session.timeout,
-        )
+        try:
+            self.response = requests.post(
+                url=self.session.api_url,
+                data=data,
+                cookies=self.cookies,
+                timeout=self.session.timeout,
+            )
+        except requests.Timeout:
+            self.response = None
 
     @property
     def response_json(self) -> str:

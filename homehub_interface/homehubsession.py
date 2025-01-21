@@ -1,10 +1,10 @@
 import os
-import json
 from urllib.parse import urljoin
 from typing import List, Dict, Union
 
 from homehubauth import HomeHubGuestAuth, HomeHubAdminAuth
 from homehubrequest import HomeHubRequest
+from homehubaction import *
 
 
 class AuthenticationException(Exception):
@@ -43,23 +43,28 @@ class HomeHubSession:
         self.auth.authenticate()
 
     def authenticate_admin(self) -> None:
-        self.make_request([{"method": "resetEvents"}])
+        self.make_request([HomeHubActionResetEvents()])
 
         self.next_request_id = 0
 
         self.auth = HomeHubAdminAuth(self)
         self.auth.authenticate()
 
-    def make_request(
-        self, actions: List[Dict[str, Union[str, Dict[str, Union[str, bool]]]]]
-    ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
+    def make_request(self, actions: List[HomeHubAction]) -> HomeHubRequest:
         if self.auth is None:
             self.authenticate_guest()
 
         request = HomeHubRequest(self)
 
+        admin_required = False
+
         for action in actions:
             request.add_action(action)
+            if action.admin_required:
+                admin_required = True
+
+        if admin_required and not self.auth.is_admin:
+            self.authenticate_admin()
 
         request.send()
 
@@ -72,35 +77,16 @@ class HomeHubSession:
     def get_hub_light_control(
         self,
     ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
-        actions = [
-            {
-                "method": "getValue",
-                "xpath": "Device/Managers/HubLightControl/LedEnable",
-                "options": {"capability-flags": {"interface": True}},
-            },
-            {
-                "method": "getValue",
-                "xpath": "Device/Managers/HubLightControl/Brightness",
-                "options": {"capability-flags": {"interface": True}},
-            },
-            {
-                "method": "getValue",
-                "xpath": "Device/Managers/HubLightControl/Schedule/Enable",
-                "options": {"capability-flags": {"interface": True}},
-            },
-            {
-                "method": "getValue",
-                "xpath": "Device/Managers/HubLightControl/Schedule/TurnLightOn",
-                "options": {"capability-flags": {"interface": True}},
-            },
-            {
-                "method": "getValue",
-                "xpath": "Device/Managers/HubLightControl/Schedule/TurnLightOff",
-                "options": {"capability-flags": {"interface": True}},
-            },
-        ]
 
-        request = self.make_request(actions)
+        request = self.make_request(
+            [
+                HomeHubHubActionLightControlLedEnableGetValue(),
+                HomeHubHubActionLightControlBrightnessGetValue(),
+                HomeHubHubActionLightControlScheduleEnableGetValue(),
+                HomeHubHubActionLightControlScheduleTurnLightOnGetValue(),
+                HomeHubHubActionLightControlScheduleTurnLightOffGetValue(),
+            ]
+        )
 
         return request.response_json
 
@@ -113,30 +99,14 @@ class HomeHubSession:
         :return: a dictionary containing all the devices connected to the bt home hub
         """
 
-        actions = [
-            {
-                "method": "getValue",
-                "xpath": "Device/Hosts/Hosts",
-                "options": {"capability-flags": {"interface": True}},
-            }
-        ]
-
-        request = self.make_request(actions)
+        request = self.make_request([HomeHubActionDeviceHostsHostsGetValue()])
 
         return request.response_json
 
     def get_vendor_log_download_uri(
         self,
     ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
-        actions = [
-            {
-                "method": "getVendorLogDownloadURI",
-                "xpath": "Device/DeviceInfo/VendorLogFiles/VendorLogFile[@uid='1']",
-                "parameters": {"FileName": "eventLog"},
-            }
-        ]
-
-        request = self.make_request(actions)
+        request = self.make_request([HomeHubActionGetVendorLogDownloadURI()])
 
         return request.response_json
 

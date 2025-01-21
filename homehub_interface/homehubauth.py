@@ -4,6 +4,7 @@ import random
 from typing import Dict, Any, List, Union
 
 from homehubrequest import HomeHubRequest
+from homehubaction import HomeHubActionLogIn
 
 
 class AuthenticationException(Exception):
@@ -25,39 +26,8 @@ class HomeHubAuth:
         return self._md5_hex(f"{self.user}:{self.server_nonce}:{self.password}")
 
     def authenticate(self) -> None:
-        print("authenticating with", self.user)
-
         request: HomeHubRequest = self.session.make_request(
-            [
-                {
-                    "method": "logIn",
-                    "parameters": {
-                        "user": self.user,
-                        "persistent": True,
-                        "session-options": {
-                            "nss": [
-                                {
-                                    "name": "gtw",
-                                    "uri": "http://sagemcom.com/gateway-data",
-                                }
-                            ],
-                            "language": "ident",
-                            "context-flags": {
-                                "get-content-name": True,
-                                "local-time": True,
-                            },
-                            "capability-depth": 2,
-                            "capability-flags": {
-                                "name": True,
-                                "default-value": False,
-                                "restriction": True,
-                                "description": False,
-                            },
-                            "time-format": "ISO_8601",
-                        },
-                    },
-                }
-            ]
+            [HomeHubActionLogIn(self.user)]
         )
 
         if not request.is_successful:
@@ -101,6 +71,10 @@ class HomeHubAuth:
             "ha1": self.ha1,
             "nonce": self.server_nonce,
         }
+
+    @property
+    def is_admin(self) -> bool:
+        return self.user == "admin"
 
 
 class HomeHubAdminAuth(HomeHubAuth):
