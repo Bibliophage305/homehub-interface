@@ -176,3 +176,6 @@ pyrightconfig.json
 # End of https://www.toptal.com/developers/gitignore/api/python
 
 homehub_interface/run.py
+homehub_interface/test.py
+homehub_interface/parse_requests.py
+har_logs/

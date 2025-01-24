@@ -4,13 +4,14 @@ from urllib.parse import quote
 from typing import Dict, Any, List
 
 from homehubaction import HomeHubAction
+from homehubresponse import HomeHubResponse
 
 
 class HomeHubRequest:
     def __init__(self, session: Any) -> None:
         self.session: Any = session
         self.actions: List[HomeHubAction] = []
-        self.response: Any = None
+        self.response: HomeHubResponse = None
 
     @property
     def cookies(self) -> Dict[str, str]:
@@ -52,23 +53,22 @@ class HomeHubRequest:
         data = {"req": json.dumps(self.request_data, sort_keys=True).encode("utf-8")}
 
         try:
-            self.response = requests.post(
+            response = requests.post(
                 url=self.session.api_url,
                 data=data,
                 cookies=self.cookies,
                 timeout=self.session.timeout,
             )
+            self.response = HomeHubResponse(response)
         except requests.Timeout:
             self.response = None
 
     @property
-    def response_json(self) -> str:
-        return json.loads(self.response.text) if self.response is not None else None
+    def is_successful(self) -> bool:
+        return self.response is not None and self.response.is_successful
 
     @property
-    def is_successful(self) -> bool:
+    def has_invalid_user_session_error(self) -> bool:
         return (
-            self.response_json
-            and self.response_json.get("reply", {}).get("error", {}).get("code", {})
-            == 16777216
+            self.response is not None and self.response.has_invalid_user_session_error
         )

@@ -38,22 +38,28 @@ class HomeHubSession:
     def uri_to_url(self, uri: str) -> str:
         return urljoin(self.base_url.rstrip("/"), uri)
 
+    def reauthenticate(self) -> None:
+        if self.auth.is_admin:
+            self.authenticate_admin()
+        else:
+            self.authenticate_guest()
+
+    def reset_session(self) -> None:
+        self.make_request([HomeHubActionResetEvents()])
+        self.next_request_id = 0
+
     def authenticate_guest(self) -> None:
         self.auth = HomeHubGuestAuth(self)
         self.auth.authenticate()
 
     def authenticate_admin(self) -> None:
-        self.make_request([HomeHubActionResetEvents()])
-
-        self.next_request_id = 0
-
+        if self.auth is None:
+            self.authenticate_guest()
+        self.reset_session()
         self.auth = HomeHubAdminAuth(self)
         self.auth.authenticate()
 
-    def make_request(self, actions: List[HomeHubAction]) -> HomeHubRequest:
-        if self.auth is None:
-            self.authenticate_guest()
-
+    def make_request(self, actions: List[HomeHubAction], auth_is_fresh = False) -> HomeHubRequest:
         request = HomeHubRequest(self)
 
         admin_required = False
@@ -64,56 +70,18 @@ class HomeHubSession:
                 admin_required = True
 
         if admin_required and not self.auth.is_admin:
-            self.authenticate_admin()
+            raise AuthenticationException("Admin privileges required")
 
         request.send()
+
+        if request.has_invalid_user_session_error:
+            if auth_is_fresh:
+                raise AuthenticationException("Failed to reauthenticate")
+            self.reauthenticate()
+            return self.make_request(actions, auth_is_fresh=True)
 
         self.requests.append(request)
 
         self.next_request_id += 1
 
         return request
-
-    def get_hub_light_control(
-        self,
-    ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
-
-        request = self.make_request(
-            [
-                HomeHubHubActionLightControlLedEnableGetValue(),
-                HomeHubHubActionLightControlBrightnessGetValue(),
-                HomeHubHubActionLightControlScheduleEnableGetValue(),
-                HomeHubHubActionLightControlScheduleTurnLightOnGetValue(),
-                HomeHubHubActionLightControlScheduleTurnLightOffGetValue(),
-            ]
-        )
-
-        return request.response_json
-
-    def get_devices(self) -> List[Dict[str, Union[str, Dict[str, Union[str, bool]]]]]:
-        """
-        Returns the list of connected devices
-
-        :param only_active: a flag indicating whether only currently active (connected) devices should be returned.
-        Default `True`
-        :return: a dictionary containing all the devices connected to the bt home hub
-        """
-
-        request = self.make_request([HomeHubActionDeviceHostsHostsGetValue()])
-
-        return request.response_json
-
-    def get_vendor_log_download_uri(
-        self,
-    ) -> Dict[str, Union[str, Dict[str, Union[str, bool]]]]:
-        request = self.make_request([HomeHubActionGetVendorLogDownloadURI()])
-
-        return request.response_json
-
-    @staticmethod
-    def _is_invalid_user_session(
-        data: Dict[str, Union[str, Dict[str, Union[str, bool]]]]
-    ) -> bool:
-        return (
-            data and data.get("reply", {}).get("error", {}).get("code", {}) == 16777219
-        )

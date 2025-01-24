@@ -32,12 +32,9 @@ class HomeHubAuth:
 
         if not request.is_successful:
             raise AuthenticationException(
-                f"Failed to authenticate. Error: {request.response_json['reply']['error']['description']}"
+                f"Failed to authenticate. Error: {request.response.error.description}"
             )
-
-        params: Dict[str, Any] = request.response_json["reply"]["actions"][0][
-            "callbacks"
-        ][0]["parameters"]
+        params: Dict[str, Any] = request.response.actions[0].callbacks[0].parameters
 
         self.server_nonce = params["nonce"]
         self.session_id = params["id"]
