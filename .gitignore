@@ -179,3 +179,4 @@ homehub_interface/run.py
 homehub_interface/test.py
 homehub_interface/parse_requests.py
 har_logs/
+raw_xpaths

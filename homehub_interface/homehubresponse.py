@@ -10,6 +10,7 @@ class HomeHubResponse:
         try:
             response_json = response.json()
         except Exception as e:
+            print("error decoding json")
             print(response.text)
             raise e
         self.uid: int = response_json["reply"]["uid"]

@@ -1,6 +1,6 @@
 import os
 from urllib.parse import urljoin
-from typing import List, Dict, Union
+from typing import List
 
 from homehubauth import HomeHubGuestAuth, HomeHubAdminAuth
 from homehubrequest import HomeHubRequest
@@ -59,7 +59,9 @@ class HomeHubSession:
         self.auth = HomeHubAdminAuth(self)
         self.auth.authenticate()
 
-    def make_request(self, actions: List[HomeHubAction], auth_is_fresh = False) -> HomeHubRequest:
+    def make_request(
+        self, actions: List[HomeHubAction], auth_is_fresh=False
+    ) -> HomeHubRequest:
         request = HomeHubRequest(self)
 
         admin_required = False
