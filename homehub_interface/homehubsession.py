@@ -2,9 +2,9 @@ import os
 from urllib.parse import urljoin
 from typing import List
 
-from homehubauth import HomeHubGuestAuth, HomeHubAdminAuth
-from homehubrequest import HomeHubRequest
-from homehubaction import *
+from .homehubauth import HomeHubGuestAuth, HomeHubAdminAuth
+from .homehubrequest import HomeHubRequest
+from .homehubaction import *
 
 
 class AuthenticationException(Exception):

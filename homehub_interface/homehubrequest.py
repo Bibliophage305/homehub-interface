@@ -3,8 +3,8 @@ import requests
 from urllib.parse import quote
 from typing import Dict, Any, List
 
-from homehubaction import HomeHubAction
-from homehubresponse import HomeHubResponse
+from .homehubaction import HomeHubAction
+from .homehubresponse import HomeHubResponse
 
 
 class HomeHubRequest:

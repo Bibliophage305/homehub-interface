@@ -3,8 +3,8 @@ import os
 import random
 from typing import Dict, Any, List, Union
 
-from homehubrequest import HomeHubRequest
-from homehubaction import HomeHubActionLogIn
+from .homehubrequest import HomeHubRequest
+from .homehubaction import HomeHubActionLogIn
 
 
 class AuthenticationException(Exception):
