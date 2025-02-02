@@ -110,8 +110,8 @@ from enum import Enum, auto
 
 
 class HomeHubActionDeviceATMLinksDestinationAddressGetValueLinkAlias(Enum):
-    ATM_TV = auto()
     ATM_DATA = auto()
+    ATM_TV = auto()
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValuePoolAlias(Enum):
@@ -119,8 +119,8 @@ class HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValuePoolAlias(Enum):
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValuePoolAlias(Enum):
-    OPENWIFI_POOL = auto()
     DEFAULT_POOL = auto()
+    OPENWIFI_POOL = auto()
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValuePoolAlias(Enum):
@@ -128,13 +128,13 @@ class HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValuePoolAlias(Enum):
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsMaxAddressGetValuePoolAlias(Enum):
-    OPENWIFI_POOL = auto()
     DEFAULT_POOL = auto()
+    OPENWIFI_POOL = auto()
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsMinAddressGetValuePoolAlias(Enum):
-    OPENWIFI_POOL = auto()
     DEFAULT_POOL = auto()
+    OPENWIFI_POOL = auto()
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValuePoolAlias(Enum):
@@ -142,8 +142,8 @@ class HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValuePoolAlias(Enum)
 
 
 class HomeHubActionDeviceDHCPv4ServerPoolsSubnetMaskGetValuePoolAlias(Enum):
-    OPENWIFI_POOL = auto()
     DEFAULT_POOL = auto()
+    OPENWIFI_POOL = auto()
 
 
 class HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAddressGetValuePoolAlias(
@@ -254,8 +254,8 @@ class HomeHubActionDeviceEthernetVLANTerminationsVLANIDGetValueVLANTerminationAl
 
 
 class HomeHubActionDeviceFirewallChainsRulesGetValueChainName(Enum):
-    Custom = auto()
     Low = auto()
+    Custom = auto()
 
 
 class HomeHubActionDeviceFirewallLevelsDefaultPolicyGetValueLevelName(Enum):
@@ -269,8 +269,8 @@ class HomeHubActionDeviceIPInterfacesIPv6AddressesIPv6AddressIPAddressGetValueIn
 
 
 class HomeHubActionDeviceIPInterfacesIPv6AddressesIPAddressGetValueInterfaceAlias(Enum):
-    IP_DATA = auto()
     IP_BR_LAN = auto()
+    IP_DATA = auto()
 
 
 class HomeHubActionDeviceIPInterfacesIPv6AddressesIPAddressGetValueIPv6AddressAlias(
@@ -281,8 +281,8 @@ class HomeHubActionDeviceIPInterfacesIPv6AddressesIPAddressGetValueIPv6AddressAl
 
 
 class HomeHubActionDeviceIPInterfacesIPv6AddressesGetValueInterfaceAlias(Enum):
-    IP_DATA = auto()
     IP_BR_LAN = auto()
+    IP_DATA = auto()
 
 
 class HomeHubActionDeviceIPInterfacesIPv6AddressesGetValueIPv6AddressIPAddressStatus(
@@ -300,8 +300,8 @@ class HomeHubActionDeviceIPInterfacesIPv6PrefixesPrefixGetValueIPv6PrefixAlias(E
 
 
 class HomeHubActionDeviceIPInterfacesIPv6PrefixesGetValueInterfaceAlias(Enum):
-    IP_DATA = auto()
     IP_BR_LAN = auto()
+    IP_DATA = auto()
 
 
 class HomeHubActionDeviceIPInterfacesULAEnableGetValueInterfaceAlias(Enum):
@@ -309,8 +309,8 @@ class HomeHubActionDeviceIPInterfacesULAEnableGetValueInterfaceAlias(Enum):
 
 
 class HomeHubActionDeviceIPInterfacesIPv4AddressesIPAddressGetValueInterfaceAlias(Enum):
-    IP_DATA = auto()
     IP_BR_OPENWIFI = auto()
+    IP_DATA = auto()
 
 
 class HomeHubActionDeviceIPInterfacesIPv4AddressesIPAddressGetValueIPv4AddressAlias(
@@ -323,8 +323,8 @@ class HomeHubActionDeviceIPInterfacesIPv4AddressesIPAddressGetValueIPv4AddressAl
 class HomeHubActionDeviceIPInterfacesIPv4AddressesSubnetMaskGetValueInterfaceAlias(
     Enum
 ):
-    IP_DATA = auto()
     IP_BR_OPENWIFI = auto()
+    IP_DATA = auto()
 
 
 class HomeHubActionDeviceIPInterfacesIPv4AddressesSubnetMaskGetValueIPv4AddressAlias(
@@ -592,37 +592,37 @@ class HomeHubActionDeviceWiFiRadiosTransmitPowerGetValueRadioAlias(Enum):
 
 
 class HomeHubActionDeviceWiFiSSIDsConnectionTimeGetValueSSIDAlias(Enum):
-    WL_PRIV5G = auto()
     WL_PRIV2G = auto()
+    WL_PRIV5G = auto()
 
 
 class HomeHubActionDeviceWiFiSSIDsEnableGetValueSSIDAlias(Enum):
-    WL_PRIV5G = auto()
     WL_PRIV2G = auto()
+    WL_PRIV5G = auto()
 
 
 class HomeHubActionDeviceWiFiSSIDsMACAddressGetValueSSIDAlias(Enum):
-    WL_PRIV5G = auto()
     WL_PRIV2G = auto()
+    WL_PRIV5G = auto()
 
 
 class HomeHubActionDeviceWiFiSSIDsSSIDGetValueSSIDAlias(Enum):
-    WL_REDSIDE_X1_2G = auto()
-    WL_REDSIDE_O1_5G = auto()
+    WL_PRIV2G = auto()
+    WL_PRIV5G = auto()
     WL_REDSIDE_O1_2G = auto()
     WL_REDSIDE_X1_5G = auto()
-    WL_PRIV5G = auto()
-    WL_PRIV2G = auto()
+    WL_REDSIDE_O1_5G = auto()
+    WL_REDSIDE_X1_2G = auto()
 
 
 class HomeHubActionDeviceWiFiSSIDsStatusGetValueSSIDAlias(Enum):
-    WL_PRIV5G = auto()
     WL_PRIV2G = auto()
+    WL_PRIV5G = auto()
 
 
 class HomeHubActionDeviceWiFiSSIDsGetValueSSIDAlias(Enum):
-    WL_PRIV5G = auto()
     WL_PRIV2G = auto()
+    WL_PRIV5G = auto()
 
 
 class HomeHubActionDeviceATMLinksDestinationAddressGetValue(
@@ -1567,7 +1567,9 @@ class HomeHubActionDeviceIPInterfacesStatusSubscribeForNotification(
     def xpath(self):
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
 
-    parameters = {"id": "2", "type": "value-change", "current-value": False}
+    @property
+    def parameters(self):
+        return {"id": self.id, "type": "value-change", "current-value": False}
 
 
 class HomeHubActionDeviceManagementServerTR69InternalDataSettingsPortGetValue(
@@ -1590,18 +1592,11 @@ class HomeHubActionDeviceManagersHubLightControlBrightnessSetValue(
 
     xpath = "Device/Managers/HubLightControl/Brightness"
 
-    parameters = {"value": 0}
-
-
-class HomeHubActionDeviceManagersHubLightControlBrightnessSetValue(
-    HomeHubAction, MethodSetValueMixin
-):
-    def __init__(self, value: any):
-        self.value = value
-
-    xpath = "Device/Managers/HubLightControl/Brightness"
-
-    parameters = {"value": 100}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceManagersHubLightControlFrontLEDColorGetValue(
@@ -1624,18 +1619,11 @@ class HomeHubActionDeviceManagersHubLightControlLedEnableSetValue(
 
     xpath = "Device/Managers/HubLightControl/LedEnable"
 
-    parameters = {"value": "OFF"}
-
-
-class HomeHubActionDeviceManagersHubLightControlLedEnableSetValue(
-    HomeHubAction, MethodSetValueMixin
-):
-    def __init__(self, value: any):
-        self.value = value
-
-    xpath = "Device/Managers/HubLightControl/LedEnable"
-
-    parameters = {"value": "ON"}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceManagersHubLightControlScheduleEnableGetValue(
@@ -1652,18 +1640,11 @@ class HomeHubActionDeviceManagersHubLightControlScheduleEnableSetValue(
 
     xpath = "Device/Managers/HubLightControl/Schedule/Enable"
 
-    parameters = {"value": False}
-
-
-class HomeHubActionDeviceManagersHubLightControlScheduleEnableSetValue(
-    HomeHubAction, MethodSetValueMixin
-):
-    def __init__(self, value: any):
-        self.value = value
-
-    xpath = "Device/Managers/HubLightControl/Schedule/Enable"
-
-    parameters = {"value": True}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceManagersHubLightControlScheduleTurnLightOffGetValue(
@@ -1680,7 +1661,11 @@ class HomeHubActionDeviceManagersHubLightControlScheduleTurnLightOffSetValue(
 
     xpath = "Device/Managers/HubLightControl/Schedule/TurnLightOff"
 
-    parameters = {"value": 3540}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceManagersHubLightControlScheduleTurnLightOnGetValue(
@@ -1697,7 +1682,11 @@ class HomeHubActionDeviceManagersHubLightControlScheduleTurnLightOnSetValue(
 
     xpath = "Device/Managers/HubLightControl/Schedule/TurnLightOn"
 
-    parameters = {"value": 3360}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceManagersNetworkDataDhcpLanMaxAddressGetValue(
@@ -1744,7 +1733,11 @@ class HomeHubActionDeviceManagersNetworkDataObfuscatedPPPPasswordSetValue(
 
     xpath = "Device/Managers/NetworkData/ObfuscatedPPPPassword"
 
-    parameters = {"value": ""}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceNATPortMappingsInternalClientGetValue(
@@ -1900,25 +1893,11 @@ class HomeHubActionDevicePPPInterfacesEnableSetValue(
     def xpath(self):
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Enable"
 
-    parameters = {"value": False}
-
-
-class HomeHubActionDevicePPPInterfacesEnableSetValue(
-    HomeHubAction, MethodSetValueMixin
-):
-    def __init__(
-        self,
-        interface_alias: HomeHubActionDevicePPPInterfacesEnableSetValueInterfaceAlias,
-        value: any,
-    ):
-        self.interface_alias = interface_alias
-        self.value = value
-
     @property
-    def xpath(self):
-        return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Enable"
-
-    parameters = {"value": True}
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
@@ -1936,61 +1915,9 @@ class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
     def xpath(self):
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
 
-    parameters = {"id": "1", "type": "value-change", "current-value": False}
-
-
-class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
-    HomeHubAction, MethodSubscribeForNotificationMixin
-):
-    def __init__(
-        self,
-        interface_alias: HomeHubActionDevicePPPInterfacesStatusSubscribeForNotificationInterfaceAlias,
-        id: int,
-    ):
-        self.interface_alias = interface_alias
-        self.id = id
-
     @property
-    def xpath(self):
-        return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
-
-    parameters = {"id": "2", "type": "value-change", "current-value": False}
-
-
-class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
-    HomeHubAction, MethodSubscribeForNotificationMixin
-):
-    def __init__(
-        self,
-        interface_alias: HomeHubActionDevicePPPInterfacesStatusSubscribeForNotificationInterfaceAlias,
-        id: int,
-    ):
-        self.interface_alias = interface_alias
-        self.id = id
-
-    @property
-    def xpath(self):
-        return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
-
-    parameters = {"id": "4", "type": "value-change", "current-value": False}
-
-
-class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
-    HomeHubAction, MethodSubscribeForNotificationMixin
-):
-    def __init__(
-        self,
-        interface_alias: HomeHubActionDevicePPPInterfacesStatusSubscribeForNotificationInterfaceAlias,
-        id: int,
-    ):
-        self.interface_alias = interface_alias
-        self.id = id
-
-    @property
-    def xpath(self):
-        return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
-
-    parameters = {"id": "6", "type": "value-change", "current-value": False}
+    def parameters(self):
+        return {"id": self.id, "type": "value-change", "current-value": False}
 
 
 class HomeHubActionDevicePPPInterfacesUsernameGetValue(
@@ -2022,43 +1949,11 @@ class HomeHubActionDevicePPPInterfacesUsernameSetValue(
     def xpath(self):
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Username"
 
-    parameters = {"value": "bthomehub@btbroadband.com"}
-
-
-class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
-    HomeHubAction, MethodSubscribeForNotificationMixin
-):
-    def __init__(
-        self,
-        interface_alias: HomeHubActionDevicePPPInterfacesStatusSubscribeForNotificationInterfaceAlias,
-        id: int,
-    ):
-        self.interface_alias = interface_alias
-        self.id = id
-
     @property
-    def xpath(self):
-        return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
-
-    parameters = {"id": "3", "type": "value-change", "current-value": False}
-
-
-class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
-    HomeHubAction, MethodSubscribeForNotificationMixin
-):
-    def __init__(
-        self,
-        interface_alias: HomeHubActionDevicePPPInterfacesStatusSubscribeForNotificationInterfaceAlias,
-        id: int,
-    ):
-        self.interface_alias = interface_alias
-        self.id = id
-
-    @property
-    def xpath(self):
-        return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
-
-    parameters = {"id": "5", "type": "value-change", "current-value": False}
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceRouterAdvertisementInterfaceSettingsAdvManagedFlagGetValue(
@@ -2171,18 +2066,11 @@ class HomeHubActionDeviceServicesDeviceConfigPortClampingEnableSetValue(
 
     xpath = "Device/Services/DeviceConfig/PortClampingEnable"
 
-    parameters = {"value": False}
-
-
-class HomeHubActionDeviceServicesDeviceConfigPortClampingEnableSetValue(
-    HomeHubAction, MethodSetValueMixin
-):
-    def __init__(self, value: any):
-        self.value = value
-
-    xpath = "Device/Services/DeviceConfig/PortClampingEnable"
-
-    parameters = {"value": True}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceServicesDeviceConfigWiFiModeGetValue(
@@ -2208,21 +2096,11 @@ class HomeHubActionDeviceServicesDynamicDNSClientsEnableSetValue(
     def xpath(self):
         return f"Device/Services/DynamicDNS/Clients/Client[@uid='{self.client_uid}']/Enable"
 
-    parameters = {"value": False}
-
-
-class HomeHubActionDeviceServicesDynamicDNSClientsEnableSetValue(
-    HomeHubAction, MethodSetValueMixin
-):
-    def __init__(self, client_uid: int, value: any):
-        self.client_uid = client_uid
-        self.value = value
-
     @property
-    def xpath(self):
-        return f"Device/Services/DynamicDNS/Clients/Client[@uid='{self.client_uid}']/Enable"
-
-    parameters = {"value": True}
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceServicesDynamicDNSClientsHostnamesNameSetValue(
@@ -2237,7 +2115,11 @@ class HomeHubActionDeviceServicesDynamicDNSClientsHostnamesNameSetValue(
     def xpath(self):
         return f"Device/Services/DynamicDNS/Clients/Client[@uid='{self.client_uid}']/Hostnames/Hostname[@uid='{self.hostname_uid}']/Name"
 
-    parameters = {"value": "http://atestdomain.duckdns.org/"}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceServicesDynamicDNSClientsPasswordSetValue(
@@ -2251,7 +2133,11 @@ class HomeHubActionDeviceServicesDynamicDNSClientsPasswordSetValue(
     def xpath(self):
         return f"Device/Services/DynamicDNS/Clients/Client[@uid='{self.client_uid}']/Password"
 
-    parameters = {"value": "f3fd60b2-88d9-4c20-a55a-260ca6e8daac"}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceServicesDynamicDNSClientsServiceReferenceSetValue(
@@ -2265,7 +2151,11 @@ class HomeHubActionDeviceServicesDynamicDNSClientsServiceReferenceSetValue(
     def xpath(self):
         return f"Device/Services/DynamicDNS/Clients/Client[@uid='{self.client_uid}']/ServiceReference"
 
-    parameters = {"value": 'Device/Services/DynamicDNS/Services/Service[@uid="2"]'}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceServicesDynamicDNSClientsUsernameSetValue(
@@ -2279,7 +2169,11 @@ class HomeHubActionDeviceServicesDynamicDNSClientsUsernameSetValue(
     def xpath(self):
         return f"Device/Services/DynamicDNS/Clients/Client[@uid='{self.client_uid}']/Username"
 
-    parameters = {"value": "christopher.hampson58@gmail.com"}
+    @property
+    def parameters(self):
+        return {
+            "value": self.value,
+        }
 
 
 class HomeHubActionDeviceServicesDynamicDNSClientsGetValue(
@@ -2578,18 +2472,9 @@ class HomeHubActionDeviceWiFiRadiosRadioChannelSubscribeForNotification(
 
     xpath = "Device/WiFi/Radios/Radio/Channel"
 
-    parameters = {"id": "1", "type": "value-change", "current-value": False}
-
-
-class HomeHubActionDeviceWiFiRadiosRadioChannelSubscribeForNotification(
-    HomeHubAction, MethodSubscribeForNotificationMixin
-):
-    def __init__(self, id: int):
-        self.id = id
-
-    xpath = "Device/WiFi/Radios/Radio/Channel"
-
-    parameters = {"id": "3", "type": "value-change", "current-value": False}
+    @property
+    def parameters(self):
+        return {"id": self.id, "type": "value-change", "current-value": False}
 
 
 class HomeHubActionDeviceWiFiRadiosAutoChannelEnableGetValue(
@@ -2833,46 +2718,25 @@ class HomeHubActionLogIn(HomeHubAction, MethodLogInMixin):
     def __init__(self, user: str):
         self.user = user
 
-    parameters = {
-        "user": "admin",
-        "persistent": True,
-        "session-options": {
-            "nss": [{"name": "gtw", "uri": "http://sagemcom.com/gateway-data"}],
-            "language": "ident",
-            "context-flags": {"get-content-name": True, "local-time": True},
-            "capability-depth": 2,
-            "capability-flags": {
-                "name": True,
-                "default-value": False,
-                "restriction": True,
-                "description": False,
+    @property
+    def parameters(self):
+        return {
+            "user": self.user,
+            "persistent": True,
+            "session-options": {
+                "nss": [{"name": "gtw", "uri": "http://sagemcom.com/gateway-data"}],
+                "language": "ident",
+                "context-flags": {"get-content-name": True, "local-time": True},
+                "capability-depth": 2,
+                "capability-flags": {
+                    "name": True,
+                    "default-value": False,
+                    "restriction": True,
+                    "description": False,
+                },
+                "time-format": "ISO_8601",
             },
-            "time-format": "ISO_8601",
-        },
-    }
-
-
-class HomeHubActionLogIn(HomeHubAction, MethodLogInMixin):
-    def __init__(self, user: str):
-        self.user = user
-
-    parameters = {
-        "user": "guest",
-        "persistent": True,
-        "session-options": {
-            "nss": [{"name": "gtw", "uri": "http://sagemcom.com/gateway-data"}],
-            "language": "ident",
-            "context-flags": {"get-content-name": True, "local-time": True},
-            "capability-depth": 2,
-            "capability-flags": {
-                "name": True,
-                "default-value": False,
-                "restriction": True,
-                "description": False,
-            },
-            "time-format": "ISO_8601",
-        },
-    }
+        }
 
 
 class HomeHubActionLogOut(HomeHubAction, MethodLogOutMixin):
@@ -2889,40 +2753,8 @@ class HomeHubActionUnsubscribeForNotification(
     def __init__(self, id: int):
         self.id = id
 
-    parameters = {"id": "1"}
-
-
-class HomeHubActionUnsubscribeForNotification(
-    HomeHubAction, MethodUnsubscribeForNotificationMixin
-):
-    def __init__(self, id: int):
-        self.id = id
-
-    parameters = {"id": "2"}
-
-
-class HomeHubActionUnsubscribeForNotification(
-    HomeHubAction, MethodUnsubscribeForNotificationMixin
-):
-    def __init__(self, id: int):
-        self.id = id
-
-    parameters = {"id": "3"}
-
-
-class HomeHubActionUnsubscribeForNotification(
-    HomeHubAction, MethodUnsubscribeForNotificationMixin
-):
-    def __init__(self, id: int):
-        self.id = id
-
-    parameters = {"id": "4"}
-
-
-class HomeHubActionUnsubscribeForNotification(
-    HomeHubAction, MethodUnsubscribeForNotificationMixin
-):
-    def __init__(self, id: int):
-        self.id = id
-
-    parameters = {"id": "5"}
+    @property
+    def parameters(self):
+        return {
+            "id": self.id,
+        }
