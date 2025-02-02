@@ -23,7 +23,9 @@ def test_HomeHubActionDeviceATMLinksDestinationAddressGetValue():
         HomeHubActionDeviceATMLinksDestinationAddressGetValue(link_alias)
         for link_alias in HomeHubActionXPathParamLinkAlias
     ]
-    assert session.make_request(actions).response
+    request = session.make_request(actions)
+    print(request.response)
+    assert request.response.is_successful
 
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue(
@@ -44,7 +46,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue(
@@ -65,7 +67,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue(
@@ -88,7 +90,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsMaxAddressGetValue(
@@ -108,7 +110,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsMaxAddressGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsMaxAddressGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsMinAddressGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -137,7 +139,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue(
@@ -158,7 +160,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue(
@@ -181,7 +183,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -200,7 +202,7 @@ def test_HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValue():
         HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValue(pool_alias)
         for pool_alias in HomeHubActionXPathParamPoolAlias
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDHCPv4ServerPoolsSubnetMaskGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -232,7 +234,7 @@ def test_HomeHubActionDeviceDHCPv4ServerX_SAGEMCOM_AuthoritativeGetValue():
     actions = [
         HomeHubActionDeviceDHCPv4ServerX_SAGEMCOM_AuthoritativeGetValue()
     ]
-    assert session.make_request(actions).response
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAddressGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -244,6 +246,9 @@ def test_HomeHubActionDeviceDHCPv4ServerX_SAGEMCOM_AuthoritativeGetValue():
 #     ):
 #         self.pool_alias = pool_alias
 #         self.client_active = client_active
+#     @property
+#     def xpath(self):
+#         return f"Device/DHCPv6/Server/Pools/Pool[Alias='{self.pool_alias.name}']/Clients/Client[Active='{self.client_active.name}']/IPv6Addresses/IPv6Address/IPAddress"
 
 def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAddressGetValue():
     session = HomeHubSession(timeout=1)
@@ -253,12 +258,7 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
         for pool_alias in HomeHubActionXPathParamPoolAlias
         for client_active in HomeHubActionXPathParamClientActive
     ]
-    assert session.make_request(actions).response
-
-#     @property
-#     def xpath(self):
-#         return f"Device/DHCPv6/Server/Pools/Pool[Alias='{self.pool_alias.name}']/Clients/Client[Active='{self.client_active.name}']/IPv6Addresses/IPv6Address/IPAddress"
-
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDHCPv6ServerPoolsIANAEnableGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -270,6 +270,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DHCPv6/Server/Pools/Pool[Alias='{self.pool_alias.name}']/IANAEnable"
 
+def test_HomeHubActionDeviceDHCPv6ServerPoolsIANAEnableGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDHCPv6ServerPoolsIANAEnableGetValue(pool_alias)
+        for pool_alias in HomeHubActionXPathParamPoolAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDHCPv6ServerPoolsStatusGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -281,18 +289,40 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DHCPv6/Server/Pools/Pool[Alias='{self.pool_alias.name}']/Status"
 
+def test_HomeHubActionDeviceDHCPv6ServerPoolsStatusGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDHCPv6ServerPoolsStatusGetValue(pool_alias)
+        for pool_alias in HomeHubActionXPathParamPoolAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDNSClientHostNameGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DNS/Client/HostName"
 
+def test_HomeHubActionDeviceDNSClientHostNameGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDNSClientHostNameGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDNSClientLocalDomainsGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DNS/Client/LocalDomains"
 
+def test_HomeHubActionDeviceDNSClientLocalDomainsGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDNSClientLocalDomainsGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDNSRelayForwardingsDNSServerGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -304,12 +334,27 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DNS/Relay/Forwardings/Forwarding[Status='{self.forwarding_status.name}']/DNSServer"
 
+def test_HomeHubActionDeviceDNSRelayForwardingsDNSServerGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDNSRelayForwardingsDNSServerGetValue(forwarding_status)
+        for forwarding_status in HomeHubActionXPathParamForwardingStatus
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDNSRelayLocalDomainsGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DNS/Relay/LocalDomains"
 
+def test_HomeHubActionDeviceDNSRelayLocalDomainsGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDNSRelayLocalDomainsGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -323,6 +368,15 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #             f"Device/DSL/Channels/Channel[@uid='{self.channel_uid}']/DownstreamCurrRate"
 #         )
 
+# needs longer timeout value
+def test_HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue():
+    session = HomeHubSession(timeout=5)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(channel_uid)
+        for channel_uid in [1]
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -336,6 +390,15 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #             f"Device/DSL/Channels/Channel[@uid='{self.channel_uid}']/UpstreamCurrRate"
 #         )
 
+# needs longer timeout value
+def test_HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue():
+    session = HomeHubSession(timeout=5)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(channel_uid)
+        for channel_uid in [1]
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLChannelsActualInterleavingDelayGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -347,6 +410,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/ActualInterleavingDelay"
 
+def test_HomeHubActionDeviceDSLChannelsActualInterleavingDelayGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLChannelsActualInterleavingDelayGetValue(channel_alias)
+        for channel_alias in HomeHubActionXPathParamChannelAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLChannelsActualInterleavingDelayusGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -358,6 +429,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/ActualInterleavingDelayus"
 
+def test_HomeHubActionDeviceDSLChannelsActualInterleavingDelayusGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLChannelsActualInterleavingDelayusGetValue(channel_alias)
+        for channel_alias in HomeHubActionXPathParamChannelAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -369,6 +448,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/DownstreamCurrRate"
 
+def test_HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(channel_alias)
+        for channel_alias in HomeHubActionXPathParamChannelAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -380,6 +467,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/UpstreamCurrRate"
 
+def test_HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(channel_alias)
+        for channel_alias in HomeHubActionXPathParamChannelAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesLastChangeGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -391,6 +486,15 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[@uid='{self.line_uid}']/LastChange"
 
+# needs longer timeout value
+def test_HomeHubActionDeviceDSLLinesLastChangeGetValue():
+    session = HomeHubSession(timeout=5)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesLastChangeGetValue(line_uid)
+        for line_uid in [1]
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesStatsBytesReceivedGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -402,6 +506,15 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[@uid='{self.line_uid}']/Stats/BytesReceived"
 
+# needs longer timeout value
+def test_HomeHubActionDeviceDSLLinesStatsBytesReceivedGetValue():
+    session = HomeHubSession(timeout=5)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesStatsBytesReceivedGetValue(line_uid)
+        for line_uid in [1]
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesStatsBytesSentGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -413,6 +526,15 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[@uid='{self.line_uid}']/Stats/BytesSent"
 
+# needs longer timeout value
+def test_HomeHubActionDeviceDSLLinesStatsBytesSentGetValue():
+    session = HomeHubSession(timeout=5)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesStatsBytesSentGetValue(line_uid)
+        for line_uid in [1]
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesDownstreamAttenuationGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -424,6 +546,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/DownstreamAttenuation"
 
+def test_HomeHubActionDeviceDSLLinesDownstreamAttenuationGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesDownstreamAttenuationGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesDownstreamMaxBitRateGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -435,6 +565,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/DownstreamMaxBitRate"
 
+def test_HomeHubActionDeviceDSLLinesDownstreamMaxBitRateGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesDownstreamMaxBitRateGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesDownstreamNoiseMarginGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -446,6 +584,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/DownstreamNoiseMargin"
 
+def test_HomeHubActionDeviceDSLLinesDownstreamNoiseMarginGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesDownstreamNoiseMarginGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesFirmwareVersionGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -457,6 +603,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/FirmwareVersion"
 
+def test_HomeHubActionDeviceDSLLinesFirmwareVersionGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesFirmwareVersionGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesLastChangeGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -468,6 +622,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/LastChange"
 
+def test_HomeHubActionDeviceDSLLinesLastChangeGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesLastChangeGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesSignalDownstreamAttenuationGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -479,6 +641,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/SignalDownstreamAttenuation"
 
+def test_HomeHubActionDeviceDSLLinesSignalDownstreamAttenuationGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesSignalDownstreamAttenuationGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesSignalUpstreamAttenuationGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -490,6 +660,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/SignalUpstreamAttenuation"
 
+def test_HomeHubActionDeviceDSLLinesSignalUpstreamAttenuationGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesSignalUpstreamAttenuationGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesStandardUsedGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -501,6 +679,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/StandardUsed"
 
+def test_HomeHubActionDeviceDSLLinesStandardUsedGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesStandardUsedGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesStatusGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -512,6 +698,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #     def xpath(self):
 #         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/Status"
 
+def test_HomeHubActionDeviceDSLLinesStatusGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesStatusGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesUpstreamAttenuationGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -525,6 +719,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #             f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/UpstreamAttenuation"
 #         )
 
+def test_HomeHubActionDeviceDSLLinesUpstreamAttenuationGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesUpstreamAttenuationGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesUpstreamMaxBitRateGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -538,6 +740,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #             f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/UpstreamMaxBitRate"
 #         )
 
+def test_HomeHubActionDeviceDSLLinesUpstreamMaxBitRateGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesUpstreamMaxBitRateGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDSLLinesUpstreamNoiseMarginGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
@@ -551,72 +761,157 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 #             f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/UpstreamNoiseMargin"
 #         )
 
+def test_HomeHubActionDeviceDSLLinesUpstreamNoiseMarginGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDSLLinesUpstreamNoiseMarginGetValue(line_alias)
+        for line_alias in HomeHubActionXPathParamLineAlias
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceDiscoveryDeviceIdentificationDeviceTypesGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceDiscovery/DeviceIdentification/DeviceTypes"
 
+def test_HomeHubActionDeviceDeviceDiscoveryDeviceIdentificationDeviceTypesGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceDiscoveryDeviceIdentificationDeviceTypesGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoBootloaderVersionGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/BootloaderVersion"
 
+def test_HomeHubActionDeviceDeviceInfoBootloaderVersionGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoBootloaderVersionGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoExternalFirmwareVersionGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/ExternalFirmwareVersion"
 
+def test_HomeHubActionDeviceDeviceInfoExternalFirmwareVersionGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoExternalFirmwareVersionGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoHardwareVersionGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/HardwareVersion"
 
+def test_HomeHubActionDeviceDeviceInfoHardwareVersionGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoHardwareVersionGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoMACAddressGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/MACAddress"
 
+def test_HomeHubActionDeviceDeviceInfoMACAddressGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoMACAddressGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoModelNameGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/ModelName"
 
+def test_HomeHubActionDeviceDeviceInfoModelNameGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoModelNameGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoProductClassGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/ProductClass"
 
+def test_HomeHubActionDeviceDeviceInfoProductClassGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoProductClassGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoProductVariantGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/ProductVariant"
 
+def test_HomeHubActionDeviceDeviceInfoProductVariantGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoProductVariantGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoSerialNumberGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/SerialNumber"
 
+def test_HomeHubActionDeviceDeviceInfoSerialNumberGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoSerialNumberGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoSupportedDataModelsSupportedDataModelURLGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/SupportedDataModels/SupportedDataModel/URL"
 
+def test_HomeHubActionDeviceDeviceInfoSupportedDataModelsSupportedDataModelURLGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoSupportedDataModelsSupportedDataModelURLGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoUpTimeGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 # ):
 #     xpath = "Device/DeviceInfo/UpTime"
 
+def test_HomeHubActionDeviceDeviceInfoUpTimeGetValue():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoUpTimeGetValue()
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceDeviceInfoVendorLogFilesGetVendorLogDownloadURI(
 #     HomeHubAction, MethodGetVendorLogDownloadURIMixin
@@ -630,6 +925,14 @@ def test_HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAd
 
 #     parameters = {"FileName": "eventLog"}
 
+def test_HomeHubActionDeviceDeviceInfoVendorLogFilesGetVendorLogDownloadURI():
+    session = HomeHubSession(timeout=1)
+    session.authenticate_admin()
+    actions = [
+        HomeHubActionDeviceDeviceInfoVendorLogFilesGetVendorLogDownloadURI(vendorlogfile_uid)
+        for vendorlogfile_uid in [1]
+    ]
+    assert session.make_request(actions).response.is_successful
 
 # class HomeHubActionDeviceEthernetInterfacesStatusGetValue(
 #     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
