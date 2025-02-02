@@ -222,7 +222,7 @@ class HomeHubActionXPathParamVoiceServiceAlias(Enum):
     VOICESERVICE1 = auto()
 
 
-class HomeHubActionDeviceATMLinksDestinationAddressGetValue(
+class HomeHubActionDeviceATMLinksLinkParamAliasDestinationAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, link_alias: HomeHubActionXPathParamLinkAlias):
@@ -235,7 +235,7 @@ class HomeHubActionDeviceATMLinksDestinationAddressGetValue(
         )
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -246,7 +246,7 @@ class HomeHubActionDeviceDHCPv4ServerPoolsEnableGetValue(
         return f"Device/DHCPv4/Server/Pools/Pool[Alias='{self.pool_alias.name}']/Enable"
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasIPInterfaceGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -257,7 +257,7 @@ class HomeHubActionDeviceDHCPv4ServerPoolsIPInterfaceGetValue(
         return f"Device/DHCPv4/Server/Pools/Pool[Alias='{self.pool_alias.name}']/IPInterface"
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasLeaseTimeGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -270,7 +270,7 @@ class HomeHubActionDeviceDHCPv4ServerPoolsLeaseTimeGetValue(
         )
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsMaxAddressGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasMaxAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -281,7 +281,7 @@ class HomeHubActionDeviceDHCPv4ServerPoolsMaxAddressGetValue(
         return f"Device/DHCPv4/Server/Pools/Pool[Alias='{self.pool_alias.name}']/MaxAddress"
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsMinAddressGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasMinAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -292,7 +292,7 @@ class HomeHubActionDeviceDHCPv4ServerPoolsMinAddressGetValue(
         return f"Device/DHCPv4/Server/Pools/Pool[Alias='{self.pool_alias.name}']/MinAddress"
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasStaticAddressesGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -303,7 +303,7 @@ class HomeHubActionDeviceDHCPv4ServerPoolsStaticAddressesGetValue(
         return f"Device/DHCPv4/Server/Pools/Pool[Alias='{self.pool_alias.name}']/StaticAddresses"
 
 
-class HomeHubActionDeviceDHCPv4ServerPoolsSubnetMaskGetValue(
+class HomeHubActionDeviceDHCPv4ServerPoolsPoolParamAliasSubnetMaskGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -320,7 +320,7 @@ class HomeHubActionDeviceDHCPv4ServerX_SAGEMCOM_AuthoritativeGetValue(
     xpath = "Device/DHCPv4/Server/X_SAGEMCOM_Authoritative"
 
 
-class HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAddressGetValue(
+class HomeHubActionDeviceDHCPv6ServerPoolsPoolParamAliasClientsClientParamActiveIPv6AddressesIPv6AddressIPAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -336,7 +336,7 @@ class HomeHubActionDeviceDHCPv6ServerPoolsClientsIPv6AddressesIPv6AddressIPAddre
         return f"Device/DHCPv6/Server/Pools/Pool[Alias='{self.pool_alias.name}']/Clients/Client[Active='{self.client_active.name}']/IPv6Addresses/IPv6Address/IPAddress"
 
 
-class HomeHubActionDeviceDHCPv6ServerPoolsIANAEnableGetValue(
+class HomeHubActionDeviceDHCPv6ServerPoolsPoolParamAliasIANAEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -347,7 +347,7 @@ class HomeHubActionDeviceDHCPv6ServerPoolsIANAEnableGetValue(
         return f"Device/DHCPv6/Server/Pools/Pool[Alias='{self.pool_alias.name}']/IANAEnable"
 
 
-class HomeHubActionDeviceDHCPv6ServerPoolsStatusGetValue(
+class HomeHubActionDeviceDHCPv6ServerPoolsPoolParamAliasStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, pool_alias: HomeHubActionXPathParamPoolAlias):
@@ -370,7 +370,7 @@ class HomeHubActionDeviceDNSClientLocalDomainsGetValue(
     xpath = "Device/DNS/Client/LocalDomains"
 
 
-class HomeHubActionDeviceDNSRelayForwardingsDNSServerGetValue(
+class HomeHubActionDeviceDNSRelayForwardingsForwardingParamStatusDNSServerGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, forwarding_status: HomeHubActionXPathParamForwardingStatus):
@@ -387,7 +387,7 @@ class HomeHubActionDeviceDNSRelayLocalDomainsGetValue(
     xpath = "Device/DNS/Relay/LocalDomains"
 
 
-class HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(
+class HomeHubActionDeviceDSLChannelsChannelParamuidDownstreamCurrRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, channel_uid: int):
@@ -400,7 +400,7 @@ class HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(
         )
 
 
-class HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(
+class HomeHubActionDeviceDSLChannelsChannelParamuidUpstreamCurrRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, channel_uid: int):
@@ -413,7 +413,7 @@ class HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(
         )
 
 
-class HomeHubActionDeviceDSLChannelsActualInterleavingDelayGetValue(
+class HomeHubActionDeviceDSLChannelsChannelParamAliasActualInterleavingDelayGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, channel_alias: HomeHubActionXPathParamChannelAlias):
@@ -424,7 +424,7 @@ class HomeHubActionDeviceDSLChannelsActualInterleavingDelayGetValue(
         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/ActualInterleavingDelay"
 
 
-class HomeHubActionDeviceDSLChannelsActualInterleavingDelayusGetValue(
+class HomeHubActionDeviceDSLChannelsChannelParamAliasActualInterleavingDelayusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, channel_alias: HomeHubActionXPathParamChannelAlias):
@@ -435,7 +435,7 @@ class HomeHubActionDeviceDSLChannelsActualInterleavingDelayusGetValue(
         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/ActualInterleavingDelayus"
 
 
-class HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(
+class HomeHubActionDeviceDSLChannelsChannelParamAliasDownstreamCurrRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, channel_alias: HomeHubActionXPathParamChannelAlias):
@@ -446,7 +446,7 @@ class HomeHubActionDeviceDSLChannelsDownstreamCurrRateGetValue(
         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/DownstreamCurrRate"
 
 
-class HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(
+class HomeHubActionDeviceDSLChannelsChannelParamAliasUpstreamCurrRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, channel_alias: HomeHubActionXPathParamChannelAlias):
@@ -457,7 +457,7 @@ class HomeHubActionDeviceDSLChannelsUpstreamCurrRateGetValue(
         return f"Device/DSL/Channels/Channel[Alias='{self.channel_alias.name}']/UpstreamCurrRate"
 
 
-class HomeHubActionDeviceDSLLinesLastChangeGetValue(
+class HomeHubActionDeviceDSLLinesLineParamuidLastChangeGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_uid: int):
@@ -468,7 +468,7 @@ class HomeHubActionDeviceDSLLinesLastChangeGetValue(
         return f"Device/DSL/Lines/Line[@uid='{self.line_uid}']/LastChange"
 
 
-class HomeHubActionDeviceDSLLinesStatsBytesReceivedGetValue(
+class HomeHubActionDeviceDSLLinesLineParamuidStatsBytesReceivedGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_uid: int):
@@ -479,7 +479,7 @@ class HomeHubActionDeviceDSLLinesStatsBytesReceivedGetValue(
         return f"Device/DSL/Lines/Line[@uid='{self.line_uid}']/Stats/BytesReceived"
 
 
-class HomeHubActionDeviceDSLLinesStatsBytesSentGetValue(
+class HomeHubActionDeviceDSLLinesLineParamuidStatsBytesSentGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_uid: int):
@@ -490,7 +490,7 @@ class HomeHubActionDeviceDSLLinesStatsBytesSentGetValue(
         return f"Device/DSL/Lines/Line[@uid='{self.line_uid}']/Stats/BytesSent"
 
 
-class HomeHubActionDeviceDSLLinesDownstreamAttenuationGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasDownstreamAttenuationGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -501,7 +501,7 @@ class HomeHubActionDeviceDSLLinesDownstreamAttenuationGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/DownstreamAttenuation"
 
 
-class HomeHubActionDeviceDSLLinesDownstreamMaxBitRateGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasDownstreamMaxBitRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -512,7 +512,7 @@ class HomeHubActionDeviceDSLLinesDownstreamMaxBitRateGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/DownstreamMaxBitRate"
 
 
-class HomeHubActionDeviceDSLLinesDownstreamNoiseMarginGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasDownstreamNoiseMarginGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -523,7 +523,7 @@ class HomeHubActionDeviceDSLLinesDownstreamNoiseMarginGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/DownstreamNoiseMargin"
 
 
-class HomeHubActionDeviceDSLLinesFirmwareVersionGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasFirmwareVersionGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -534,7 +534,7 @@ class HomeHubActionDeviceDSLLinesFirmwareVersionGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/FirmwareVersion"
 
 
-class HomeHubActionDeviceDSLLinesLastChangeGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasLastChangeGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -545,7 +545,7 @@ class HomeHubActionDeviceDSLLinesLastChangeGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/LastChange"
 
 
-class HomeHubActionDeviceDSLLinesSignalDownstreamAttenuationGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasSignalDownstreamAttenuationGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -556,7 +556,7 @@ class HomeHubActionDeviceDSLLinesSignalDownstreamAttenuationGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/SignalDownstreamAttenuation"
 
 
-class HomeHubActionDeviceDSLLinesSignalUpstreamAttenuationGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasSignalUpstreamAttenuationGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -567,7 +567,7 @@ class HomeHubActionDeviceDSLLinesSignalUpstreamAttenuationGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/SignalUpstreamAttenuation"
 
 
-class HomeHubActionDeviceDSLLinesStandardUsedGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasStandardUsedGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -578,7 +578,7 @@ class HomeHubActionDeviceDSLLinesStandardUsedGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/StandardUsed"
 
 
-class HomeHubActionDeviceDSLLinesStatusGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -589,7 +589,7 @@ class HomeHubActionDeviceDSLLinesStatusGetValue(
         return f"Device/DSL/Lines/Line[Alias='{self.line_alias.name}']/Status"
 
 
-class HomeHubActionDeviceDSLLinesUpstreamAttenuationGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasUpstreamAttenuationGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -602,7 +602,7 @@ class HomeHubActionDeviceDSLLinesUpstreamAttenuationGetValue(
         )
 
 
-class HomeHubActionDeviceDSLLinesUpstreamMaxBitRateGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasUpstreamMaxBitRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -615,7 +615,7 @@ class HomeHubActionDeviceDSLLinesUpstreamMaxBitRateGetValue(
         )
 
 
-class HomeHubActionDeviceDSLLinesUpstreamNoiseMarginGetValue(
+class HomeHubActionDeviceDSLLinesLineParamAliasUpstreamNoiseMarginGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_alias: HomeHubActionXPathParamLineAlias):
@@ -694,7 +694,7 @@ class HomeHubActionDeviceDeviceInfoUpTimeGetValue(
     xpath = "Device/DeviceInfo/UpTime"
 
 
-class HomeHubActionDeviceDeviceInfoVendorLogFilesGetVendorLogDownloadURI(
+class HomeHubActionDeviceDeviceInfoVendorLogFilesVendorLogFileParamuidGetVendorLogDownloadURI(
     HomeHubAction, MethodGetVendorLogDownloadURIMixin
 ):
     def __init__(self, vendorlogfile_uid: int):
@@ -707,7 +707,7 @@ class HomeHubActionDeviceDeviceInfoVendorLogFilesGetVendorLogDownloadURI(
     parameters = {"FileName": "eventLog"}
 
 
-class HomeHubActionDeviceEthernetInterfacesStatusGetValue(
+class HomeHubActionDeviceEthernetInterfacesInterfaceParamAliasStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -718,7 +718,7 @@ class HomeHubActionDeviceEthernetInterfacesStatusGetValue(
         return f"Device/Ethernet/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
 
 
-class HomeHubActionDeviceEthernetInterfacesMACAddressGetValue(
+class HomeHubActionDeviceEthernetInterfacesInterfaceParamAliasMACAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -729,7 +729,7 @@ class HomeHubActionDeviceEthernetInterfacesMACAddressGetValue(
         return f"Device/Ethernet/Interfaces/Interface[Alias='{self.interface_alias.name}']/MACAddress"
 
 
-class HomeHubActionDeviceEthernetLinksLowerLayersGetValue(
+class HomeHubActionDeviceEthernetLinksLinkParamAliasLowerLayersGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, link_alias: HomeHubActionXPathParamLinkAlias):
@@ -740,7 +740,7 @@ class HomeHubActionDeviceEthernetLinksLowerLayersGetValue(
         return f"Device/Ethernet/Links/Link[Alias='{self.link_alias.name}']/LowerLayers"
 
 
-class HomeHubActionDeviceEthernetVLANTerminationsVLANIDGetValue(
+class HomeHubActionDeviceEthernetVLANTerminationsVLANTerminationParamAliasVLANIDGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -753,7 +753,7 @@ class HomeHubActionDeviceEthernetVLANTerminationsVLANIDGetValue(
         return f"Device/Ethernet/VLANTerminations/VLANTermination[Alias='{self.vlantermination_alias.name}']/VLANID"
 
 
-class HomeHubActionDeviceFASTLinesStatusGetValue(
+class HomeHubActionDeviceFASTLinesLineParamuidStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, line_uid: int):
@@ -764,7 +764,7 @@ class HomeHubActionDeviceFASTLinesStatusGetValue(
         return f"Device/FAST/Lines/Line[@uid='{self.line_uid}']/Status"
 
 
-class HomeHubActionDeviceFirewallChainsRulesGetValue(
+class HomeHubActionDeviceFirewallChainsChainParamNameRulesGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, chain_name: HomeHubActionXPathParamChainName):
@@ -775,7 +775,7 @@ class HomeHubActionDeviceFirewallChainsRulesGetValue(
         return f"Device/Firewall/Chains/Chain[Name='{self.chain_name.name}']/Rules"
 
 
-class HomeHubActionDeviceFirewallChainsRulesGetValue(
+class HomeHubActionDeviceFirewallChainsChainParamNameRulesRuleParamIPVersionGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -801,7 +801,7 @@ class HomeHubActionDeviceFirewallEnableGetValue(
     xpath = "Device/Firewall/Enable"
 
 
-class HomeHubActionDeviceFirewallLevelsDefaultPolicyGetValue(
+class HomeHubActionDeviceFirewallLevelsLevelParamNameDefaultPolicyGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, level_name: HomeHubActionXPathParamLevelName):
@@ -832,7 +832,7 @@ class HomeHubActionDeviceHostsHostsHostBlacklistedScheduleGetValue(
     xpath = "Device/Hosts/Hosts/Host/BlacklistedSchedule"
 
 
-class HomeHubActionDeviceHostsHostsGetValue(
+class HomeHubActionDeviceHostsHostsHostParamuidGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, host_uid: int):
@@ -855,7 +855,7 @@ class HomeHubActionDeviceIPIPv6StatusGetValue(
     xpath = "Device/IP/IPv6Status"
 
 
-class HomeHubActionDeviceIPInterfacesIPv6AddressesIPv6AddressIPAddressGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv6AddressesIPv6AddressIPAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -866,7 +866,7 @@ class HomeHubActionDeviceIPInterfacesIPv6AddressesIPv6AddressIPAddressGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv6Addresses/IPv6Address/IPAddress"
 
 
-class HomeHubActionDeviceIPInterfacesIPv6AddressesIPAddressGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv6AddressesIPv6AddressParamAliasIPAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -882,7 +882,7 @@ class HomeHubActionDeviceIPInterfacesIPv6AddressesIPAddressGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv6Addresses/IPv6Address[Alias='{self.ipv6address_alias.name}']/IPAddress"
 
 
-class HomeHubActionDeviceIPInterfacesIPv6AddressesGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv6AddressesIPv6AddressParamIPAddressStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -898,7 +898,7 @@ class HomeHubActionDeviceIPInterfacesIPv6AddressesGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv6Addresses/IPv6Address[IPAddressStatus='{self.ipv6address_ipaddressstatus.name}']"
 
 
-class HomeHubActionDeviceIPInterfacesIPv6PrefixesPrefixGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv6PrefixesIPv6PrefixParamAliasPrefixGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -914,7 +914,7 @@ class HomeHubActionDeviceIPInterfacesIPv6PrefixesPrefixGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv6Prefixes/IPv6Prefix[Alias='{self.ipv6prefix_alias.name}']/Prefix"
 
 
-class HomeHubActionDeviceIPInterfacesIPv6PrefixesGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv6PrefixesGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -925,7 +925,7 @@ class HomeHubActionDeviceIPInterfacesIPv6PrefixesGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv6Prefixes"
 
 
-class HomeHubActionDeviceIPInterfacesULAEnableGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasULAEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -936,7 +936,7 @@ class HomeHubActionDeviceIPInterfacesULAEnableGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/ULAEnable"
 
 
-class HomeHubActionDeviceIPInterfacesIPv4AddressesIPAddressGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv4AddressesIPv4AddressParamAliasIPAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -952,7 +952,7 @@ class HomeHubActionDeviceIPInterfacesIPv4AddressesIPAddressGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv4Addresses/IPv4Address[Alias='{self.ipv4address_alias.name}']/IPAddress"
 
 
-class HomeHubActionDeviceIPInterfacesIPv4AddressesSubnetMaskGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv4AddressesIPv4AddressParamAliasSubnetMaskGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -968,7 +968,7 @@ class HomeHubActionDeviceIPInterfacesIPv4AddressesSubnetMaskGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv4Addresses/IPv4Address[Alias='{self.ipv4address_alias.name}']/SubnetMask"
 
 
-class HomeHubActionDeviceIPInterfacesIPv4AddressesIPv4AddressIPGatewayGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv4AddressesIPv4AddressIPGatewayGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -979,7 +979,7 @@ class HomeHubActionDeviceIPInterfacesIPv4AddressesIPv4AddressIPGatewayGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv4Addresses/IPv4Address/IPGateway"
 
 
-class HomeHubActionDeviceIPInterfacesIPv4AddressesDnsGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasIPv4AddressesIPv4AddressParamAliasDnsGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -995,7 +995,7 @@ class HomeHubActionDeviceIPInterfacesIPv4AddressesDnsGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv4Addresses/IPv4Address[Alias='{self.ipv4address_alias.name}']/Dns"
 
 
-class HomeHubActionDeviceIPInterfacesLastChangeGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasLastChangeGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1006,7 +1006,7 @@ class HomeHubActionDeviceIPInterfacesLastChangeGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/LastChange"
 
 
-class HomeHubActionDeviceIPInterfacesStatsBytesReceivedGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasStatsBytesReceivedGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1017,7 +1017,7 @@ class HomeHubActionDeviceIPInterfacesStatsBytesReceivedGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Stats/BytesReceived"
 
 
-class HomeHubActionDeviceIPInterfacesStatsBytesSentGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasStatsBytesSentGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1028,7 +1028,7 @@ class HomeHubActionDeviceIPInterfacesStatsBytesSentGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Stats/BytesSent"
 
 
-class HomeHubActionDeviceIPInterfacesStatusGetValue(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1039,7 +1039,7 @@ class HomeHubActionDeviceIPInterfacesStatusGetValue(
         return f"Device/IP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
 
 
-class HomeHubActionDeviceIPInterfacesStatusSubscribeForNotification(
+class HomeHubActionDeviceIPInterfacesInterfaceParamAliasStatusSubscribeForNotification(
     HomeHubAction, MethodSubscribeForNotificationMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias, id: int):
@@ -1223,7 +1223,7 @@ class HomeHubActionDeviceManagersNetworkDataObfuscatedPPPPasswordSetValue(
         }
 
 
-class HomeHubActionDeviceNATPortMappingsInternalClientGetValue(
+class HomeHubActionDeviceNATPortMappingsPortMappingParamAliasInternalClientGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, portmapping_alias: HomeHubActionXPathParamPortMappingAlias):
@@ -1234,7 +1234,7 @@ class HomeHubActionDeviceNATPortMappingsInternalClientGetValue(
         return f"Device/NAT/PortMappings/PortMapping[Alias='{self.portmapping_alias.name}']/InternalClient"
 
 
-class HomeHubActionDeviceNATPortMappingsInternalMACAddressGetValue(
+class HomeHubActionDeviceNATPortMappingsPortMappingParamAliasInternalMACAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, portmapping_alias: HomeHubActionXPathParamPortMappingAlias):
@@ -1245,7 +1245,7 @@ class HomeHubActionDeviceNATPortMappingsInternalMACAddressGetValue(
         return f"Device/NAT/PortMappings/PortMapping[Alias='{self.portmapping_alias.name}']/InternalMACAddress"
 
 
-class HomeHubActionDeviceNATPortMappingsEnableGetValue(
+class HomeHubActionDeviceNATPortMappingsPortMappingParamServiceEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, portmapping_service: HomeHubActionXPathParamPortMappingService):
@@ -1268,7 +1268,7 @@ class HomeHubActionDeviceNATSIPALGEnableGetValue(
     xpath = "Device/NAT/SIPALGEnable"
 
 
-class HomeHubActionDevicePPPInterfacesConnectionStatusGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasConnectionStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1279,7 +1279,7 @@ class HomeHubActionDevicePPPInterfacesConnectionStatusGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/ConnectionStatus"
 
 
-class HomeHubActionDevicePPPInterfacesIPCPLocalIPAddressGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasIPCPLocalIPAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1290,7 +1290,7 @@ class HomeHubActionDevicePPPInterfacesIPCPLocalIPAddressGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPCP/LocalIPAddress"
 
 
-class HomeHubActionDevicePPPInterfacesIPCPRemoteIPAddressGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasIPCPRemoteIPAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1301,7 +1301,7 @@ class HomeHubActionDevicePPPInterfacesIPCPRemoteIPAddressGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPCP/RemoteIPAddress"
 
 
-class HomeHubActionDevicePPPInterfacesIPv6CPRemoteInterfaceIdentifierGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasIPv6CPRemoteInterfaceIdentifierGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1312,7 +1312,7 @@ class HomeHubActionDevicePPPInterfacesIPv6CPRemoteInterfaceIdentifierGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/IPv6CP/RemoteInterfaceIdentifier"
 
 
-class HomeHubActionDevicePPPInterfacesStatusGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1323,7 +1323,7 @@ class HomeHubActionDevicePPPInterfacesStatusGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Status"
 
 
-class HomeHubActionDevicePPPInterfacesEnableGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1334,7 +1334,7 @@ class HomeHubActionDevicePPPInterfacesEnableGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Enable"
 
 
-class HomeHubActionDevicePPPInterfacesEnableSetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasEnableSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(
@@ -1354,7 +1354,7 @@ class HomeHubActionDevicePPPInterfacesEnableSetValue(
         }
 
 
-class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasStatusSubscribeForNotification(
     HomeHubAction, MethodSubscribeForNotificationMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias, id: int):
@@ -1370,7 +1370,7 @@ class HomeHubActionDevicePPPInterfacesStatusSubscribeForNotification(
         return {"id": self.id, "type": "value-change", "current-value": False}
 
 
-class HomeHubActionDevicePPPInterfacesUsernameGetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasUsernameGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, interface_alias: HomeHubActionXPathParamInterfaceAlias):
@@ -1381,7 +1381,7 @@ class HomeHubActionDevicePPPInterfacesUsernameGetValue(
         return f"Device/PPP/Interfaces/Interface[Alias='{self.interface_alias.name}']/Username"
 
 
-class HomeHubActionDevicePPPInterfacesUsernameSetValue(
+class HomeHubActionDevicePPPInterfacesInterfaceParamAliasUsernameSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(
@@ -1401,7 +1401,7 @@ class HomeHubActionDevicePPPInterfacesUsernameSetValue(
         }
 
 
-class HomeHubActionDeviceRouterAdvertisementInterfaceSettingsAdvManagedFlagGetValue(
+class HomeHubActionDeviceRouterAdvertisementInterfaceSettingsInterfaceSettingParamAliasAdvManagedFlagGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -1414,7 +1414,7 @@ class HomeHubActionDeviceRouterAdvertisementInterfaceSettingsAdvManagedFlagGetVa
         return f"Device/RouterAdvertisement/InterfaceSettings/InterfaceSetting[Alias='{self.interfacesetting_alias.name}']/AdvManagedFlag"
 
 
-class HomeHubActionDeviceRouterAdvertisementInterfaceSettingsAdvOtherConfigFlagGetValue(
+class HomeHubActionDeviceRouterAdvertisementInterfaceSettingsInterfaceSettingParamAliasAdvOtherConfigFlagGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -1528,7 +1528,7 @@ class HomeHubActionDeviceServicesDeviceConfigWifiPasswordForbiddenWordsGetValue(
     xpath = "Device/Services/DeviceConfig/WifiPasswordForbiddenWords"
 
 
-class HomeHubActionDeviceServicesDynamicDNSClientsEnableSetValue(
+class HomeHubActionDeviceServicesDynamicDNSClientsClientParamuidEnableSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(self, client_uid: int, value: any):
@@ -1546,7 +1546,7 @@ class HomeHubActionDeviceServicesDynamicDNSClientsEnableSetValue(
         }
 
 
-class HomeHubActionDeviceServicesDynamicDNSClientsHostnamesNameSetValue(
+class HomeHubActionDeviceServicesDynamicDNSClientsClientParamuidHostnamesHostnameParamuidNameSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(self, client_uid: int, hostname_uid: int, value: any):
@@ -1565,7 +1565,7 @@ class HomeHubActionDeviceServicesDynamicDNSClientsHostnamesNameSetValue(
         }
 
 
-class HomeHubActionDeviceServicesDynamicDNSClientsPasswordSetValue(
+class HomeHubActionDeviceServicesDynamicDNSClientsClientParamuidPasswordSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(self, client_uid: int, value: any):
@@ -1583,7 +1583,7 @@ class HomeHubActionDeviceServicesDynamicDNSClientsPasswordSetValue(
         }
 
 
-class HomeHubActionDeviceServicesDynamicDNSClientsServiceReferenceSetValue(
+class HomeHubActionDeviceServicesDynamicDNSClientsClientParamuidServiceReferenceSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(self, client_uid: int, value: any):
@@ -1601,7 +1601,7 @@ class HomeHubActionDeviceServicesDynamicDNSClientsServiceReferenceSetValue(
         }
 
 
-class HomeHubActionDeviceServicesDynamicDNSClientsUsernameSetValue(
+class HomeHubActionDeviceServicesDynamicDNSClientsClientParamuidUsernameSetValue(
     HomeHubAction, MethodSetValueMixin
 ):
     def __init__(self, client_uid: int, value: any):
@@ -1619,7 +1619,7 @@ class HomeHubActionDeviceServicesDynamicDNSClientsUsernameSetValue(
         }
 
 
-class HomeHubActionDeviceServicesDynamicDNSClientsGetValue(
+class HomeHubActionDeviceServicesDynamicDNSClientsClientParamuidGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, client_uid: int):
@@ -1666,7 +1666,7 @@ class HomeHubActionDeviceServicesParentalControlGetValue(
     xpath = "Device/Services/ParentalControl"
 
 
-class HomeHubActionDeviceServicesStorageServicesLogicalVolumesGetValue(
+class HomeHubActionDeviceServicesStorageServicesStorageServiceParamuidLogicalVolumesGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, storageservice_uid: int):
@@ -1677,7 +1677,7 @@ class HomeHubActionDeviceServicesStorageServicesLogicalVolumesGetValue(
         return f"Device/Services/StorageServices/StorageService[@uid='{self.storageservice_uid}']/LogicalVolumes"
 
 
-class HomeHubActionDeviceServicesVoiceServicesCallControlLinesGetValue(
+class HomeHubActionDeviceServicesVoiceServicesVoiceServiceParamAliasCallControlLinesLineParamAliasGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -1693,7 +1693,7 @@ class HomeHubActionDeviceServicesVoiceServicesCallControlLinesGetValue(
         return f"Device/Services/VoiceServices/VoiceService[Alias='{self.voiceservice_alias.name}']/CallControl/Lines/Line[Alias='{self.line_alias.name}']"
 
 
-class HomeHubActionDeviceServicesVoiceServicesCallLogsGetValue(
+class HomeHubActionDeviceServicesVoiceServicesVoiceServiceParamAliasCallLogsGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, voiceservice_alias: HomeHubActionXPathParamVoiceServiceAlias):
@@ -1704,7 +1704,7 @@ class HomeHubActionDeviceServicesVoiceServicesCallLogsGetValue(
         return f"Device/Services/VoiceServices/VoiceService[Alias='{self.voiceservice_alias.name}']/CallLogs"
 
 
-class HomeHubActionDeviceServicesVoiceServicesSIPClientsLastRegistrationTimeGetValue(
+class HomeHubActionDeviceServicesVoiceServicesVoiceServiceParamAliasSIPClientsClientParamAliasLastRegistrationTimeGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -1720,7 +1720,7 @@ class HomeHubActionDeviceServicesVoiceServicesSIPClientsLastRegistrationTimeGetV
         return f"Device/Services/VoiceServices/VoiceService[Alias='{self.voiceservice_alias.name}']/SIP/Clients/Client[Alias='{self.client_alias.name}']/LastRegistrationTime"
 
 
-class HomeHubActionDeviceServicesVoiceServicesSIPClientsGetValue(
+class HomeHubActionDeviceServicesVoiceServicesVoiceServiceParamAliasSIPClientsClientParamAliasGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(
@@ -1748,7 +1748,7 @@ class HomeHubActionDeviceUPnPSettingsExtendedUPnPSecurityGetValue(
     xpath = "Device/UPnP/Settings/ExtendedUPnPSecurity"
 
 
-class HomeHubActionDeviceUserAccountsUsersSecretQueryGetValue(
+class HomeHubActionDeviceUserAccountsUsersUserParamLoginSecretQueryGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, user_login: HomeHubActionXPathParamUserLogin):
@@ -1759,7 +1759,7 @@ class HomeHubActionDeviceUserAccountsUsersSecretQueryGetValue(
         return f"Device/UserAccounts/Users/User[Login='{self.user_login.name}']/SecretQuery"
 
 
-class HomeHubActionDeviceWiFiAccessPointsAssociatedDevicesGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasAssociatedDevicesGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1770,7 +1770,7 @@ class HomeHubActionDeviceWiFiAccessPointsAssociatedDevicesGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/AssociatedDevices"
 
 
-class HomeHubActionDeviceWiFiAccessPointsEnableGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1781,7 +1781,7 @@ class HomeHubActionDeviceWiFiAccessPointsEnableGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/Enable"
 
 
-class HomeHubActionDeviceWiFiAccessPointsSSIDAdvertisementEnabledGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasSSIDAdvertisementEnabledGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1792,7 +1792,7 @@ class HomeHubActionDeviceWiFiAccessPointsSSIDAdvertisementEnabledGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/SSIDAdvertisementEnabled"
 
 
-class HomeHubActionDeviceWiFiAccessPointsSecurityKeyPassphraseGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasSecurityKeyPassphraseGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1803,7 +1803,7 @@ class HomeHubActionDeviceWiFiAccessPointsSecurityKeyPassphraseGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/Security/KeyPassphrase"
 
 
-class HomeHubActionDeviceWiFiAccessPointsSecurityModeEnabledGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasSecurityModeEnabledGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1814,7 +1814,7 @@ class HomeHubActionDeviceWiFiAccessPointsSecurityModeEnabledGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/Security/ModeEnabled"
 
 
-class HomeHubActionDeviceWiFiAccessPointsSecurityModesSupportedGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasSecurityModesSupportedGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1825,7 +1825,7 @@ class HomeHubActionDeviceWiFiAccessPointsSecurityModesSupportedGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/Security/ModesSupported"
 
 
-class HomeHubActionDeviceWiFiAccessPointsSecurityWEPKeyGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasSecurityWEPKeyGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1836,7 +1836,7 @@ class HomeHubActionDeviceWiFiAccessPointsSecurityWEPKeyGetValue(
         return f"Device/WiFi/AccessPoints/AccessPoint[Alias='{self.accesspoint_alias.name}']/Security/WEPKey"
 
 
-class HomeHubActionDeviceWiFiAccessPointsWPSEnableGetValue(
+class HomeHubActionDeviceWiFiAccessPointsAccessPointParamAliasWPSEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, accesspoint_alias: HomeHubActionXPathParamAccessPointAlias):
@@ -1890,7 +1890,7 @@ class HomeHubActionDeviceWiFiRadiosRadioChannelSubscribeForNotification(
         return {"id": self.id, "type": "value-change", "current-value": False}
 
 
-class HomeHubActionDeviceWiFiRadiosAutoChannelEnableGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasAutoChannelEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1901,7 +1901,7 @@ class HomeHubActionDeviceWiFiRadiosAutoChannelEnableGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/AutoChannelEnable"
 
 
-class HomeHubActionDeviceWiFiRadiosAutoChannelTriggerGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasAutoChannelTriggerGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1912,7 +1912,7 @@ class HomeHubActionDeviceWiFiRadiosAutoChannelTriggerGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/AutoChannelTrigger"
 
 
-class HomeHubActionDeviceWiFiRadiosChannelGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasChannelGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1923,7 +1923,7 @@ class HomeHubActionDeviceWiFiRadiosChannelGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/Channel"
 
 
-class HomeHubActionDeviceWiFiRadiosChannelsInUseGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasChannelsInUseGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1936,7 +1936,7 @@ class HomeHubActionDeviceWiFiRadiosChannelsInUseGetValue(
         )
 
 
-class HomeHubActionDeviceWiFiRadiosEnableGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1947,7 +1947,7 @@ class HomeHubActionDeviceWiFiRadiosEnableGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/Enable"
 
 
-class HomeHubActionDeviceWiFiRadiosExtensionChannelGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasExtensionChannelGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1958,7 +1958,7 @@ class HomeHubActionDeviceWiFiRadiosExtensionChannelGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/ExtensionChannel"
 
 
-class HomeHubActionDeviceWiFiRadiosMaxBitRateGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasMaxBitRateGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1969,7 +1969,7 @@ class HomeHubActionDeviceWiFiRadiosMaxBitRateGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/MaxBitRate"
 
 
-class HomeHubActionDeviceWiFiRadiosOperatingChannelBandwidthGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasOperatingChannelBandwidthGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1980,7 +1980,7 @@ class HomeHubActionDeviceWiFiRadiosOperatingChannelBandwidthGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/OperatingChannelBandwidth"
 
 
-class HomeHubActionDeviceWiFiRadiosOperatingStandardsGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasOperatingStandardsGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -1991,7 +1991,7 @@ class HomeHubActionDeviceWiFiRadiosOperatingStandardsGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/OperatingStandards"
 
 
-class HomeHubActionDeviceWiFiRadiosPossibleChannelsGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasPossibleChannelsGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -2002,7 +2002,7 @@ class HomeHubActionDeviceWiFiRadiosPossibleChannelsGetValue(
         return f"Device/WiFi/Radios/Radio[Alias='{self.radio_alias.name}']/PossibleChannels"
 
 
-class HomeHubActionDeviceWiFiRadiosTransmitPowerGetValue(
+class HomeHubActionDeviceWiFiRadiosRadioParamAliasTransmitPowerGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, radio_alias: HomeHubActionXPathParamRadioAlias):
@@ -2021,7 +2021,7 @@ class HomeHubActionDeviceWiFiSSIDsSSIDAliasGetValue(
     xpath = "Device/WiFi/SSIDs/SSID/Alias"
 
 
-class HomeHubActionDeviceWiFiSSIDsConnectionTimeGetValue(
+class HomeHubActionDeviceWiFiSSIDsSSIDParamAliasConnectionTimeGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, ssid_alias: HomeHubActionXPathParamSSIDAlias):
@@ -2032,7 +2032,7 @@ class HomeHubActionDeviceWiFiSSIDsConnectionTimeGetValue(
         return f"Device/WiFi/SSIDs/SSID[Alias='{self.ssid_alias.name}']/ConnectionTime"
 
 
-class HomeHubActionDeviceWiFiSSIDsEnableGetValue(
+class HomeHubActionDeviceWiFiSSIDsSSIDParamAliasEnableGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, ssid_alias: HomeHubActionXPathParamSSIDAlias):
@@ -2043,7 +2043,7 @@ class HomeHubActionDeviceWiFiSSIDsEnableGetValue(
         return f"Device/WiFi/SSIDs/SSID[Alias='{self.ssid_alias.name}']/Enable"
 
 
-class HomeHubActionDeviceWiFiSSIDsMACAddressGetValue(
+class HomeHubActionDeviceWiFiSSIDsSSIDParamAliasMACAddressGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, ssid_alias: HomeHubActionXPathParamSSIDAlias):
@@ -2054,7 +2054,7 @@ class HomeHubActionDeviceWiFiSSIDsMACAddressGetValue(
         return f"Device/WiFi/SSIDs/SSID[Alias='{self.ssid_alias.name}']/MACAddress"
 
 
-class HomeHubActionDeviceWiFiSSIDsSSIDGetValue(
+class HomeHubActionDeviceWiFiSSIDsSSIDParamAliasSSIDGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, ssid_alias: HomeHubActionXPathParamSSIDAlias):
@@ -2065,7 +2065,7 @@ class HomeHubActionDeviceWiFiSSIDsSSIDGetValue(
         return f"Device/WiFi/SSIDs/SSID[Alias='{self.ssid_alias.name}']/SSID"
 
 
-class HomeHubActionDeviceWiFiSSIDsStatusGetValue(
+class HomeHubActionDeviceWiFiSSIDsSSIDParamAliasStatusGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, ssid_alias: HomeHubActionXPathParamSSIDAlias):
@@ -2076,7 +2076,7 @@ class HomeHubActionDeviceWiFiSSIDsStatusGetValue(
         return f"Device/WiFi/SSIDs/SSID[Alias='{self.ssid_alias.name}']/Status"
 
 
-class HomeHubActionDeviceWiFiSSIDsGetValue(
+class HomeHubActionDeviceWiFiSSIDsSSIDParamAliasGetValue(
     HomeHubAction, MethodGetValueMixin, OptionsInterfaceCapabilityMixin
 ):
     def __init__(self, ssid_alias: HomeHubActionXPathParamSSIDAlias):
